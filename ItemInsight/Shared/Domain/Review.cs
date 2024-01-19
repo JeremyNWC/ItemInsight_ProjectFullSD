@@ -13,7 +13,7 @@ namespace ItemInsight.Shared.Domain
         public int? Rating { get; set; }
         public DateTime CreatedBy { get; set; }
         public DateTime UpdatedBy { get; set;}
-
+        
 
 
     }
