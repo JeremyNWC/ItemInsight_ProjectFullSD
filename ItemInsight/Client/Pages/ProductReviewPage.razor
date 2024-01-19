@@ -1,0 +1,81 @@
+﻿@page "/productreviewpage"
+@layout NoMenuLayout
+
+@code {
+
+}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 99;
+        }
+
+        .divSpace1 {
+            width: 400px;
+            height: 50px;
+        }
+
+        }
+
+        .PRP {
+            background-color: black;
+            border-radius: 25px;
+            border: 1px solid;
+            color: white;
+            padding: 5px 10px;
+            text-align: center;
+            display: inline-block;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .Title {
+            font-size: 2em;
+            color: black;
+            user-select: none;
+            font-family: "Times New Roman", Times, serif;
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+
+        <a href="productpage">
+            <button class="PRP"><left> Back </left></button>
+        </a>
+
+        <h3 class="Title">Product Reviews</h3>
+
+        <nav class="navigation">
+
+            <span class="oi oi-home" aria-hidden="true">
+                <a href="/">Home</a>
+            </span>
+
+            <span class="oi oi-people" aria-hidden="true">
+                <a href="aboutuspage">Contact</a>
+            </span>
+
+        </nav>
+
+
+    </header>
+    <div class="divSpace1">
+    </div>
+    <h3>Some reviews.......</h3>
+</body>
+
+</html>

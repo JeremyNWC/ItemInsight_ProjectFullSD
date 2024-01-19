@@ -1,0 +1,49 @@
+﻿@code {
+
+}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Style to create button -->
+    <base href="/writereviewpage" />
+    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/writereview.css" rel="stylesheet" />
+</head>
+
+<body>
+    <header>          
+    
+    <a href="reviewpage">
+        <button class="WRP"><left> Back </left></button>
+    </a>
+
+    <h3 class="Logo">---Write a review---</h3>
+
+    <nav class="navigation">
+
+        <span class="oi oi-home" aria-hidden="true">
+            <a href="/">Home</a>
+        </span>
+
+        <span class="oi oi-people" aria-hidden="true">
+            <a href="aboutuspage">Contact</a>
+        </span>
+    </nav>
+   
+   
+    </header>
+    <div class="divSpace">
+
+    </div>
+    <div class="div2">
+        <form action="/html/tags/html_form_tag_action.cfm" method="post">
+            <center>
+            <textarea name="comments" id="comments" style="width:96%;height:150px;padding:2%;font-size:1.2em;">
+            </textarea>
+                <input type="submit" value="Submit">
+            </center>
+        </form>
+    </div>
+</body>
+</html>

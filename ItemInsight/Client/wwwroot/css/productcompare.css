@@ -1,0 +1,44 @@
+﻿@import url('https //fonts.googleapis.com/css family=poppins');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.divSpace {
+    width: 400px;
+    height: 50px;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 99;
+}
+
+.PCP {
+    background-color: black;
+    border-radius: 25px;
+    border: 1px solid;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    display: inline-block;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.Logo {
+    font-size: 2em;
+    color: black;
+    user-select: none;
+    font-family: "Times New Roman", Times, serif;
+}
