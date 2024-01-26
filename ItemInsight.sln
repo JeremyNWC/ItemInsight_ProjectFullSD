@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34309.116
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItemInsight.Server", "ItemInsight\Server\ItemInsight.Server.csproj", "{F718D300-E7AC-4567-AD2F-BB6B52594D84}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ItemInsight.Server", "ItemInsight\Server\ItemInsight.Server.csproj", "{F718D300-E7AC-4567-AD2F-BB6B52594D84}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItemInsight.Client", "ItemInsight\Client\ItemInsight.Client.csproj", "{37AE58E6-3726-4AE2-BD78-939DFA26EB86}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ItemInsight.Client", "ItemInsight\Client\ItemInsight.Client.csproj", "{37AE58E6-3726-4AE2-BD78-939DFA26EB86}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItemInsight.Shared", "ItemInsight\Shared\ItemInsight.Shared.csproj", "{4935589E-DCF9-461A-B1C8-FE12F2C85888}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ItemInsight.Shared", "ItemInsight\Shared\ItemInsight.Shared.csproj", "{4935589E-DCF9-461A-B1C8-FE12F2C85888}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
