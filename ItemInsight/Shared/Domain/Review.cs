@@ -10,7 +10,7 @@ namespace ItemInsight.Shared.Domain
     {
         public string? ConsumerReview { get; set; }
         public string? Category { get; set; }
-        public int? Rating { get; set; }
+        public double? Rating { get; set; }
         public int ProductId { get; set; }
         public virtual Product? Product { get; set; }
     }

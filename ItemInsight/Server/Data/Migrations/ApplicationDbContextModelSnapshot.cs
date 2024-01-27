@@ -370,8 +370,8 @@ namespace ItemInsight.Server.Data.Migrations
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("Rating")
-                        .HasColumnType("int");
+                    b.Property<double?>("Rating")
+                        .HasColumnType("float");
 
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");

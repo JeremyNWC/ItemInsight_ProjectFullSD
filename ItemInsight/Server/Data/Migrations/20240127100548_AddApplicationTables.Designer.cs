@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ItemInsight.Server.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240120183358_AddApplicationTables")]
+    [Migration("20240127100548_AddApplicationTables")]
     partial class AddApplicationTables
     {
         /// <inheritdoc />
@@ -373,8 +373,8 @@ namespace ItemInsight.Server.Data.Migrations
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("Rating")
-                        .HasColumnType("int");
+                    b.Property<double?>("Rating")
+                        .HasColumnType("float");
 
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");

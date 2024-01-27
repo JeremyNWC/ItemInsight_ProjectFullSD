@@ -29,7 +29,7 @@ namespace ItemInsight.Server.Configurations.Entities
                     Id = 2,
                     ConsumerReview = "Mediocre product",
                     Category = "Furniture",
-                    Rating = 3,
+                    Rating = 3.5,
                     ProductId = 2,
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
