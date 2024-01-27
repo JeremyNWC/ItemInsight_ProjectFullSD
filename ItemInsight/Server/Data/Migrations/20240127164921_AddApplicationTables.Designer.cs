@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ItemInsight.Server.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240127100548_AddApplicationTables")]
+    [Migration("20240127164921_AddApplicationTables")]
     partial class AddApplicationTables
     {
         /// <inheritdoc />
