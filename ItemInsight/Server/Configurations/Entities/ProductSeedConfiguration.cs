@@ -1,5 +1,9 @@
-﻿using System;
+﻿using ItemInsight.Shared.Domain;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +16,7 @@ namespace ItemInsight.Server.Configurations.Entities
     {
         public void Configure(EntityTypeBuilder<Product> builder)
         {
+
             builder.HasData(
                 new Product
                 {

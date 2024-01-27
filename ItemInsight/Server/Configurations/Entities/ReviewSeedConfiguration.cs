@@ -13,6 +13,7 @@ namespace ItemInsight.Server.Configurations.Entities
     {
         public void Configure(EntityTypeBuilder<Review> builder)
         {
+
             builder.HasData(
                 new Review
                 {
