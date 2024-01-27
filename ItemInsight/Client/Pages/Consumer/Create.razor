@@ -14,6 +14,12 @@
 
     protected async override Task OnInitializedAsync()
     {
-        
+        Reviews = await _client.GetFromJsonAsync<List<Review>>($"{Endpoints.ReviewsEndpoint}");
+    }
+
+    private async Task CreateConsumer()
+    {
+        await _client.PostAsJsonAsync(Endpoints.ConsumersEndpoint, consumer);
+        _navManager.NavigateTo("/consumers/");
     }
 }
