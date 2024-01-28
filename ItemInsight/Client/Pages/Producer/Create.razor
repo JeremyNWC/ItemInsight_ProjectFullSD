@@ -1,0 +1,29 @@
+﻿@page "/producers/create/"
+@inject HttpClient _client
+@inject NavigationManager _navManager
+@using ItemInsight.Shared.Domain;
+
+<h3 class="card-title">Create New Producer</h3>
+<hr />
+<br />
+
+<FormComponent ButtonText = "Create Producer" OnValidSubmit = "CreateProducer" producer = "producer" />
+
+
+@code {
+    Producer producer = new Producer();
+
+    private IList<Review>? Reviews;
+
+    protected async override Task OnInitializedAsync()
+    {
+        Reviews = await _client.GetFromJsonAsync<List<Review>>($"{Endpoints.ReviewsEndpoint}");
+    }
+
+    private async Task CreateCar()
+    {
+        await _client.PostAsJsonAsync(Endpoints.ProducersEndpoint, producer);
+        _navManager.NavigateTo("/producers/");
+    }
+
+}
