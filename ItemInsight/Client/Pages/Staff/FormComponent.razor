@@ -1,0 +1,52 @@
+﻿@inject HttpClient _client
+<EditForm Model="@staff" OnValidSubmit="@OnValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+        <div class="form-group">
+            <label>Name: </label>
+            <div>
+                <InputText @bind-Value="@staff.Name" class="form-control" />
+                <ValidationMessage For="@(() => staff.Name)" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Contact Number: </label>
+            <div>
+                <InputText @bind-Value="@staff.ContactNo" class="form-control" />
+            <ValidationMessage For="@(() => staff.ContactNo)" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Address: </label>
+            <div>
+                <InputText @bind-Value="@staff.Address" class="form-control" />
+                <ValidationMessage For="@(() => staff.Address)" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Date of Birth: </label>
+            <div>
+                <InputDate @bind-Value="@staff.Email" class="form-control" />
+                <ValidationMessage For="@(() => staff.Email)" />
+            </div>
+        </div>
+        <br />
+        <br />
+</EditForm>
+
+
+@code {
+    [Parameter] public Staff? staff { get; set; }
+    [Parameter] public string ButtonText { get; set; } = "Save";
+    [Parameter] public EventCallback OnValidSubmit { get; set; }
+
+
+
+    protected async override Task OnInitializedAsync()
+    {
+        Reviews = await _client.GetFromJsonAsync<List<Review>>($"{Endpoints.ReviewsEndpoint}");
+    }
+}

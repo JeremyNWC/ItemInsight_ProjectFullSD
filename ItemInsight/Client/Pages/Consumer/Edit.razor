@@ -1,0 +1,26 @@
+﻿@page "/customers/edit/{id:int}"
+@inject HttpClient _client
+@inject NavigationManager _navManager
+@using ItemInsight.Shared.Domain;
+
+
+<h3>Edit Consumer</h3>
+
+<FormComponent ButtonText = "Update" OnValidSubmit = "EditCustomer" consumer = "customer" />
+
+@code {
+    [Parameter] public int id { get; set; }
+    Consumer? consumer = new Consumer();
+
+    protected async override Task OnParametersSetAsync()
+    {
+        consumer = await _client.GetFromJsonAsync<Consumer>($"{Endpoints.ConsumersEndpoint}/{id}");
+    }
+
+    async Task EditCustomer()
+    {
+        await _client.PutAsJsonAsync($"{Endpoints.ConsumersEndpoint}/{id}", consumer);
+        _navManager.NavigateTo("/customers/");
+    }
+
+}
