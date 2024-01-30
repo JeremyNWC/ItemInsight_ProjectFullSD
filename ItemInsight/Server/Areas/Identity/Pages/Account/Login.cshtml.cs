@@ -113,9 +113,24 @@ namespace ItemInsight.Server.Areas.Identity.Pages.Account
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
                 var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+                
                 if (result.Succeeded)
-                {
+                {var user = await _signInManager.UserManager.FindByEmailAsync(Input.Email);
+                    if (user != null) 
+                    {
+                        var userRole = await _signInManager.UserManager.GetRolesAsync(user);
                     _logger.LogInformation("User logged in.");
+                    if (userRole.Contains("Staff"))
+                    {
+                        return LocalRedirect("~/staff");
+                    } else if (userRole.Contains("Consumer"))
+                    {
+                        return LocalRedirect("~/consumer");
+
+                    } else
+                    {
+                        return LocalRedirect("~/producer");
+                    }
                     return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)
@@ -132,6 +147,9 @@ namespace ItemInsight.Server.Areas.Identity.Pages.Account
                     ModelState.AddModelError(string.Empty, "Invalid login attempt.");
                     return Page();
                 }
+                    }
+                    
+                    
             }
 
             // If we got this far, something failed, redisplay form

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace ItemInsight.Server.Data.Migrations
+namespace ItemInsight.Server.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -232,6 +232,62 @@ namespace ItemInsight.Server.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "3781efa7-66dc-47f0-860f-e506d04102e4",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "ba231b1f-163f-4737-b72f-8da1f8a54e3d",
+                            Email = "admin@gmail.com",
+                            EmailConfirmed = false,
+                            FirstName = "Admin",
+                            LastName = "User",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ADMIN@GMAIL.COM",
+                            NormalizedUserName = "ADMIN@LOCALHOST.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEBmM+EvN7Jgp5cX1VTqtQzU9fyAglUvWxZZiaNRSdJMAvqW8UDU9CWy6OY0ksJRzQQ==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "1cfc3965-2254-4d3d-a43d-b49fc6204f37",
+                            TwoFactorEnabled = false,
+                            UserName = "admin@localhost.com"
+                        },
+                        new
+                        {
+                            Id = "f5eb6ea1-d9cc-40dd-be1a-829c3edf2069",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "033b6085-dda2-4da4-a3bf-05345d965dc8",
+                            Email = "consumer@gmail.com",
+                            EmailConfirmed = false,
+                            FirstName = "Consumer",
+                            LastName = "User",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "CONSUMER@GMAIL.COM",
+                            NormalizedUserName = "CONSUMER@GMAIL.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEBFD3pN61no5F/KlyIlf9PNXO+G/qlrJ1oHTu9PgdX8I2BIssbwT7zb//RIT49/lmg==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "3b50dbf9-bd30-48c0-9cf8-e44273911eac",
+                            TwoFactorEnabled = false,
+                            UserName = "consumer@gmail.com"
+                        },
+                        new
+                        {
+                            Id = "2807eff2-b8a5-482d-bdb3-a2291dbc60a8",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "8390bd1c-4d91-452e-9a15-1a2c75c03553",
+                            Email = "producer@gmail.com",
+                            EmailConfirmed = false,
+                            FirstName = "Producer",
+                            LastName = "User",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "PRODUCER@GMAIL.COM",
+                            NormalizedUserName = "PRODUCER@GMAIL.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEB2P0cLGwmgTBa8e8qMUqxlA4wsfVieDqUHMC9cw4U9ZPHHKHKx+lO6KyUhsw2ex9w==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "04d4050c-225b-4383-9ff5-cec368f41f37",
+                            TwoFactorEnabled = false,
+                            UserName = "producer@gmail.com"
+                        });
                 });
 
             modelBuilder.Entity("ItemInsight.Shared.Domain.Consumer", b =>
@@ -442,6 +498,26 @@ namespace ItemInsight.Server.Data.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "ad2bcf0c-20db-474f-8407-5a6b159518ba",
+                            Name = "Staff",
+                            NormalizedName = "STAFF"
+                        },
+                        new
+                        {
+                            Id = "bd2bcf0c-20db-474f-8407-5a6b159518bb",
+                            Name = "Consumer",
+                            NormalizedName = "CONSUMER"
+                        },
+                        new
+                        {
+                            Id = "34ccd5d1-3c2e-4309-960d-9df1e2533017",
+                            Name = "Producer",
+                            NormalizedName = "PRODUCER"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -531,6 +607,23 @@ namespace ItemInsight.Server.Data.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "3781efa7-66dc-47f0-860f-e506d04102e4",
+                            RoleId = "ad2bcf0c-20db-474f-8407-5a6b159518ba"
+                        },
+                        new
+                        {
+                            UserId = "f5eb6ea1-d9cc-40dd-be1a-829c3edf2069",
+                            RoleId = "bd2bcf0c-20db-474f-8407-5a6b159518bb"
+                        },
+                        new
+                        {
+                            UserId = "2807eff2-b8a5-482d-bdb3-a2291dbc60a8",
+                            RoleId = "34ccd5d1-3c2e-4309-960d-9df1e2533017"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>

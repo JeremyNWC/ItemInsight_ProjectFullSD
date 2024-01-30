@@ -14,12 +14,10 @@
     Product product = new Product();
 
     private IList<Review>? Reviews;
-    private IList<Consumer>? Consumers;
 
     protected async override Task OnInitializedAsync()
     {
         Reviews = await _client.GetFromJsonAsync<List<Review>>($"{Endpoints.ReviewsEndpoint}");
-        Consumers = await _client.GetFromJsonAsync<List<Consumer>>($"{Endpoints.ConsumersEndpoint}");
     }
 
     private async Task CreateCar()

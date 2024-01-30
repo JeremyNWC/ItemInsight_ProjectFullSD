@@ -1,7 +1,4 @@
-﻿using ItemInsight.Shared.Domain;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -34,16 +31,6 @@ namespace ItemInsight.Server.Configurations.Entities
                     Name = "Sofa",
                     Category = "Furniture",
                     Cost = 99.9,
-                    ProducerId = 2,
-                    DateCreated = DateTime.Now,
-                    DateUpdated = DateTime.Now,
-                },
-                new Product
-                {
-                    Id = 2,
-                    Name = "Table",
-                    Category = "Furniture",
-                    Cost = 15,
                     ProducerId = 2,
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,

@@ -7,9 +7,6 @@
 <hr />
 <br />
 
-<FormComponent ButtonText = "Create Producer" OnValidSubmit = "CreateProducer" producer = "producer" />
-
-
 @code {
     Producer producer = new Producer();
 
@@ -20,10 +17,9 @@
         Reviews = await _client.GetFromJsonAsync<List<Review>>($"{Endpoints.ReviewsEndpoint}");
     }
 
-    private async Task CreateCar()
+    private async Task CreateConsumer()
     {
         await _client.PostAsJsonAsync(Endpoints.ProducersEndpoint, producer);
-        _navManager.NavigateTo("/producers/");
+        _navManager.NavigateTo("/consumers/");
     }
-
 }
