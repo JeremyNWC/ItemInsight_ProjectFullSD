@@ -17,7 +17,7 @@
 
     protected async override Task OnInitializedAsync()
     {
-        Reviews = await _client.GetFromJsonAsync<List<Review>>($"{Endpoints.ConsumersEndpoint}");
+        Reviews = await _client.GetFromJsonAsync<List<Review>>($"{Endpoints.ReviewsEndpoint}");
     }
 
     async Task Delete(int reviewId)

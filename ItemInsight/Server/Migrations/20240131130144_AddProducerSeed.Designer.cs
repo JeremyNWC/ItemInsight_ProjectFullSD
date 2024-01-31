@@ -4,6 +4,7 @@ using ItemInsight.Server.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ItemInsight.Server.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240131130144_AddProducerSeed")]
+    partial class AddProducerSeed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -238,7 +241,7 @@ namespace ItemInsight.Server.Migrations
                         {
                             Id = "3781efa7-66dc-47f0-860f-e506d04102e4",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "a018cfb1-5cb3-4c25-ad47-172aea7aa78f",
+                            ConcurrencyStamp = "afa66296-1133-44d3-89f1-08e4c14a2733",
                             Email = "admin@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Admin",
@@ -246,9 +249,9 @@ namespace ItemInsight.Server.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEIQhmcXeBTpadtGjVmbC+dj1RO4f+p5Eb/LbZWYRqZgdN324AjUvLzgYGf7iyMBr4g==",
+                            PasswordHash = "AQAAAAIAAYagAAAAECMqHthNvLaQ8KHMV2Vx+HRBl38u/GHo4D8dV1DdMlm9GycLdeuGberbgTs5tO6iDw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "126fa598-dbd5-4092-8d00-43d8c5ec5ef2",
+                            SecurityStamp = "be345d7e-900c-4217-a851-30565110f1a1",
                             TwoFactorEnabled = false,
                             UserName = "admin@localhost.com"
                         },
@@ -256,7 +259,7 @@ namespace ItemInsight.Server.Migrations
                         {
                             Id = "f5eb6ea1-d9cc-40dd-be1a-829c3edf2069",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "934731d1-e6f4-4bee-82b5-cea482153a8b",
+                            ConcurrencyStamp = "f364b097-55cf-4ae4-8099-583252a832e6",
                             Email = "consumer@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Consumer",
@@ -264,9 +267,9 @@ namespace ItemInsight.Server.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "CONSUMER@GMAIL.COM",
                             NormalizedUserName = "CONSUMER@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAELed9tYtRChYnEEuP6TMLEAVDjnq6RnTO7HJyr9fonqvCnvvT+LzJuzQNgG0MqU7bA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEC2dQ4PwTSgBaYCMycquvlUT63bQLQRGrV5oBoPGHmsuPLH4HvTqooO2OV4u77+W1Q==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "84cb53f6-67fc-4063-90cf-c979ef7238da",
+                            SecurityStamp = "9163af9f-5643-483d-8e3a-661264afdcf9",
                             TwoFactorEnabled = false,
                             UserName = "consumer@gmail.com"
                         },
@@ -274,7 +277,7 @@ namespace ItemInsight.Server.Migrations
                         {
                             Id = "2807eff2-b8a5-482d-bdb3-a2291dbc60a8",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "da48e36a-c743-46b6-bf99-3e670f6e4c9b",
+                            ConcurrencyStamp = "ecde53eb-ddd0-41be-8783-4655c3b5952b",
                             Email = "producer@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Producer",
@@ -282,9 +285,9 @@ namespace ItemInsight.Server.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "PRODUCER@GMAIL.COM",
                             NormalizedUserName = "PRODUCER@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEOBZetmgBHpyp86NxiVHRLXVhKXZMwS6hpfRAUQO1qPYxn92HttC6yZJlvH2pXYLPQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEI5wb8YJBwuJDvtioGhF7/E02n0Ri5JLGnCSBf+4t4vzq117kigeeNEFWQsu6IOPSw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "274cb905-2867-4db9-b589-794af5491924",
+                            SecurityStamp = "7719c5d8-2b81-499d-9a43-1f9fbbdbbee0",
                             TwoFactorEnabled = false,
                             UserName = "producer@gmail.com"
                         });
@@ -359,28 +362,6 @@ namespace ItemInsight.Server.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Producers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CompanyName = "JaysFashion",
-                            ContactNo = "81079182",
-                            DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "jay@gmail.com",
-                            Name = "Jay"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CompanyName = "NicFurn",
-                            ContactNo = "99283749",
-                            DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "nicole@gmail.com",
-                            Name = "Nicole"
-                        });
                 });
 
             modelBuilder.Entity("ItemInsight.Shared.Domain.Product", b =>
@@ -420,28 +401,6 @@ namespace ItemInsight.Server.Migrations
                     b.HasIndex("ProducerId");
 
                     b.ToTable("Products");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Category = "Fashion",
-                            Cost = 13.4,
-                            DateCreated = new DateTime(2024, 1, 31, 23, 11, 36, 608, DateTimeKind.Local).AddTicks(1944),
-                            DateUpdated = new DateTime(2024, 1, 31, 23, 11, 36, 608, DateTimeKind.Local).AddTicks(1952),
-                            Name = "Dotted Dress",
-                            ProducerId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Category = "Furniture",
-                            Cost = 99.900000000000006,
-                            DateCreated = new DateTime(2024, 1, 31, 23, 11, 36, 608, DateTimeKind.Local).AddTicks(1957),
-                            DateUpdated = new DateTime(2024, 1, 31, 23, 11, 36, 608, DateTimeKind.Local).AddTicks(1957),
-                            Name = "Sofa",
-                            ProducerId = 2
-                        });
                 });
 
             modelBuilder.Entity("ItemInsight.Shared.Domain.Review", b =>
@@ -481,28 +440,6 @@ namespace ItemInsight.Server.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("Reviews");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Category = "Fashion",
-                            ConsumerReview = "Wonderful product",
-                            DateCreated = new DateTime(2024, 1, 31, 23, 11, 36, 608, DateTimeKind.Local).AddTicks(739),
-                            DateUpdated = new DateTime(2024, 1, 31, 23, 11, 36, 608, DateTimeKind.Local).AddTicks(761),
-                            ProductId = 1,
-                            Rating = 5.0
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Category = "Furniture",
-                            ConsumerReview = "Mediocre product",
-                            DateCreated = new DateTime(2024, 1, 31, 23, 11, 36, 608, DateTimeKind.Local).AddTicks(772),
-                            DateUpdated = new DateTime(2024, 1, 31, 23, 11, 36, 608, DateTimeKind.Local).AddTicks(773),
-                            ProductId = 2,
-                            Rating = 3.5
-                        });
                 });
 
             modelBuilder.Entity("ItemInsight.Shared.Domain.Staff", b =>

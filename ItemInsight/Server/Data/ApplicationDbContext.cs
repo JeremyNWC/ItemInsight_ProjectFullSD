@@ -27,6 +27,10 @@ namespace ItemInsight.Server.Data
             builder.ApplyConfiguration(new RoleSeedConfiguration());
             builder.ApplyConfiguration(new UserRoleSeedConfiguration());
             builder.ApplyConfiguration(new UserSeedConfiguration());
+            builder.ApplyConfiguration(new ProducerSeedConfiguration());
+            builder.ApplyConfiguration(new ReviewSeedConfiguration());
+            builder.ApplyConfiguration(new ProductSeedConfiguration());
+
         }
 
     }
