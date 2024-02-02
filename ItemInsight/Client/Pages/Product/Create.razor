@@ -7,20 +7,67 @@
 <hr />
 <br />
 
-<FormComponent ButtonText = "Create Product" OnValidSubmit = "CreateProduct" review = "product" />
+<EditForm Model="@product" OnValidSubmit="CreateProduct">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
 
+<div class="form-group">
+    <label>Producer:</label>
+    <div>
+        <InputSelect @bind-Value="product.ProducerId" class="form-control">
+            <option value="">-- Select Producer --</option>
+            @if (Producers != null)
+            {
+                foreach (var producer in Producers)
+                {
+                    <option value="producer.Id">@producer.Id</option>
+                }
+            }
+        </InputSelect>
+        <ValidationMessage For="@(() => product.ProducerId)"/>
+    </div>
+</div>
+
+<div class="form-group">
+    <label>Name: </label>
+    <div>
+        <InputText @bind-Value="@product.Name" class="form-control"/>
+        <ValidationMessage For="@(() => product.Name)"/>
+    </div>
+</div>
+
+<div class="form-group">
+    <label>Category:</label>
+    <div>
+        <InputText @bind-Value="@product.Category" class="form-control"/>
+        <ValidationMessage For="@(() => product.Category)"/>
+    </div>
+</div>
+
+<div class="form-group">
+    <label>Cost:</label>
+    <div>
+        <InputNumber @bind-Value="@product.Cost" class="form-control"/>
+        <ValidationMessage For="@(() => product.Cost)"/>
+    </div>
+</div>
+
+<button type="submit" class="btn btn-success btn-block">
+    Create Product
+</button>
+</EditForm>
 
 @code {
     Product product = new Product();
 
-    private IList<Review>? Reviews;
+    private IList<Producer>? Producers;
 
     protected async override Task OnInitializedAsync()
     {
-        Reviews = await _client.GetFromJsonAsync<List<Review>>($"{Endpoints.ReviewsEndpoint}");
+        Producers = await _client.GetFromJsonAsync<List<Producer>>($"{Endpoints.ProducersEndpoint}");
     }
 
-    private async Task CreateCar()
+    private async Task CreateProduct()
     {
         await _client.PostAsJsonAsync(Endpoints.ProductsEndpoint, product);
         _navManager.NavigateTo("/products/");

@@ -7,9 +7,6 @@
 <hr />
 <br />
 
-<FormComponent ButtonText = "Create Review" OnValidSubmit = "CreateReview" review = "review" />
-
-
 @code {
     Review review = new Review();
 
@@ -20,7 +17,7 @@
         Products = await _client.GetFromJsonAsync<List<Product>>($"{Endpoints.ProductsEndpoint}");
     }
 
-    private async Task CreateCar()
+    private async Task CreateReview()
     {
         await _client.PostAsJsonAsync(Endpoints.ReviewsEndpoint, review);
         _navManager.NavigateTo("/reviews/");

@@ -34,7 +34,17 @@ namespace ItemInsight.Server.Configurations.Entities
                     ProducerId = 2,
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
-                }
+                },
+                    new Product
+                    {
+                        Id = 3,
+                        Name = "Sofaz",
+                        Category = "Furniture",
+                        Cost = 99.9,
+                        ProducerId = 3,
+                        DateCreated = DateTime.Now,
+                        DateUpdated = DateTime.Now,
+                    }
             );
         }
     }

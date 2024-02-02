@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ItemInsight.Server.Migrations
 {
     /// <inheritdoc />
-    public partial class AddApplicationTables : Migration
+    public partial class test1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -342,10 +342,34 @@ namespace ItemInsight.Server.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "2807eff2-b8a5-482d-bdb3-a2291dbc60a8", 0, "8390bd1c-4d91-452e-9a15-1a2c75c03553", "producer@gmail.com", false, "Producer", "User", false, null, "PRODUCER@GMAIL.COM", "PRODUCER@GMAIL.COM", "AQAAAAIAAYagAAAAEB2P0cLGwmgTBa8e8qMUqxlA4wsfVieDqUHMC9cw4U9ZPHHKHKx+lO6KyUhsw2ex9w==", null, false, "04d4050c-225b-4383-9ff5-cec368f41f37", false, "producer@gmail.com" },
-                    { "3781efa7-66dc-47f0-860f-e506d04102e4", 0, "ba231b1f-163f-4737-b72f-8da1f8a54e3d", "admin@gmail.com", false, "Admin", "User", false, null, "ADMIN@GMAIL.COM", "ADMIN@LOCALHOST.COM", "AQAAAAIAAYagAAAAEBmM+EvN7Jgp5cX1VTqtQzU9fyAglUvWxZZiaNRSdJMAvqW8UDU9CWy6OY0ksJRzQQ==", null, false, "1cfc3965-2254-4d3d-a43d-b49fc6204f37", false, "admin@localhost.com" },
-                    { "f5eb6ea1-d9cc-40dd-be1a-829c3edf2069", 0, "033b6085-dda2-4da4-a3bf-05345d965dc8", "consumer@gmail.com", false, "Consumer", "User", false, null, "CONSUMER@GMAIL.COM", "CONSUMER@GMAIL.COM", "AQAAAAIAAYagAAAAEBFD3pN61no5F/KlyIlf9PNXO+G/qlrJ1oHTu9PgdX8I2BIssbwT7zb//RIT49/lmg==", null, false, "3b50dbf9-bd30-48c0-9cf8-e44273911eac", false, "consumer@gmail.com" }
+                    { "2807eff2-b8a5-482d-bdb3-a2291dbc60a8", 0, "4f17adde-5728-4d69-b97c-a013bca2dde3", "producer@gmail.com", false, "Producer", "User", false, null, "PRODUCER@GMAIL.COM", "PRODUCER@GMAIL.COM", "AQAAAAIAAYagAAAAEKJatbnvCpVD2UXF9pfTfqz3hXxOms2S/yFd/eE6ipLjkP7tMhHdym/pziskQZLUZw==", null, false, "f29f161b-9dfd-4ab7-8aa8-9c08dca38f84", false, "producer@gmail.com" },
+                    { "3781efa7-66dc-47f0-860f-e506d04102e4", 0, "6be1a0d0-7cd8-4ccf-9cb0-18e83d73426e", "admin@gmail.com", false, "Admin", "User", false, null, "ADMIN@GMAIL.COM", "ADMIN@LOCALHOST.COM", "AQAAAAIAAYagAAAAEIcUX9ILYhq3sufucj+OHnnD5ArhK2oqRjOSkn734CY1ngYvQuq1KT/RSj4VnztFSw==", null, false, "6128836d-e541-49bf-bd8e-d70b98663fba", false, "admin@localhost.com" },
+                    { "f5eb6ea1-d9cc-40dd-be1a-829c3edf2069", 0, "352049c9-f1bf-4ac1-a095-772808ad56f9", "consumer@gmail.com", false, "Consumer", "User", false, null, "CONSUMER@GMAIL.COM", "CONSUMER@GMAIL.COM", "AQAAAAIAAYagAAAAEO/Q9tvTgq4TnTCjZDBjk+pj3rU0rv8uj+KRsxMd3+ZuEf462hfIjbV5R9pyjTbmvw==", null, false, "96987fe7-51e4-4845-a1f9-ec7159f2cafb", false, "consumer@gmail.com" }
                 });
+
+            migrationBuilder.InsertData(
+                table: "Consumers",
+                columns: new[] { "Id", "ContactNo", "CreatedBy", "DateCreated", "DateUpdated", "Email", "Name", "UpdatedBy" },
+                values: new object[,]
+                {
+                    { 1, "87538922", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "adenGaming@gmail.com", "Aden", null },
+                    { 2, "92830481", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "clare@gmail.com", "Clare", null }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Producers",
+                columns: new[] { "Id", "CompanyName", "ContactNo", "CreatedBy", "DateCreated", "DateUpdated", "Email", "Name", "UpdatedBy" },
+                values: new object[,]
+                {
+                    { 1, "JaysFashion", "81079182", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "jay@gmail.com", "Jay", null },
+                    { 2, "NicFurn", "99283749", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "nicole@gmail.com", "Nicole", null },
+                    { 3, "NicFurn", "99283749", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "nicole@gmail.com", "Nicola", null }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Staffs",
+                columns: new[] { "Id", "ContactNo", "CreatedBy", "DateCreated", "DateUpdated", "Email", "Name", "UpdatedBy" },
+                values: new object[] { 1, "81234567", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "smithies@gmail.com", "JohnSmith", null });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
@@ -355,6 +379,26 @@ namespace ItemInsight.Server.Migrations
                     { "34ccd5d1-3c2e-4309-960d-9df1e2533017", "2807eff2-b8a5-482d-bdb3-a2291dbc60a8" },
                     { "ad2bcf0c-20db-474f-8407-5a6b159518ba", "3781efa7-66dc-47f0-860f-e506d04102e4" },
                     { "bd2bcf0c-20db-474f-8407-5a6b159518bb", "f5eb6ea1-d9cc-40dd-be1a-829c3edf2069" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Products",
+                columns: new[] { "Id", "Category", "Cost", "CreatedBy", "DateCreated", "DateUpdated", "Name", "ProducerId", "UpdatedBy" },
+                values: new object[,]
+                {
+                    { 1, "Fashion", 13.4, null, new DateTime(2024, 2, 2, 10, 55, 13, 290, DateTimeKind.Local).AddTicks(3382), new DateTime(2024, 2, 2, 10, 55, 13, 290, DateTimeKind.Local).AddTicks(3385), "Dotted Dress", 1, null },
+                    { 2, "Furniture", 99.900000000000006, null, new DateTime(2024, 2, 2, 10, 55, 13, 290, DateTimeKind.Local).AddTicks(3387), new DateTime(2024, 2, 2, 10, 55, 13, 290, DateTimeKind.Local).AddTicks(3388), "Sofa", 2, null },
+                    { 3, "Furniture", 99.900000000000006, null, new DateTime(2024, 2, 2, 10, 55, 13, 290, DateTimeKind.Local).AddTicks(3390), new DateTime(2024, 2, 2, 10, 55, 13, 290, DateTimeKind.Local).AddTicks(3391), "Sofaz", 3, null }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Reviews",
+                columns: new[] { "Id", "Category", "ConsumerReview", "CreatedBy", "DateCreated", "DateUpdated", "ProductId", "Rating", "UpdatedBy" },
+                values: new object[,]
+                {
+                    { 1, "Fashion", "Wonderful product", null, new DateTime(2024, 2, 2, 10, 55, 13, 290, DateTimeKind.Local).AddTicks(2291), new DateTime(2024, 2, 2, 10, 55, 13, 290, DateTimeKind.Local).AddTicks(2312), 1, 5.0, null },
+                    { 2, "Furniture", "Mediocre product", null, new DateTime(2024, 2, 2, 10, 55, 13, 290, DateTimeKind.Local).AddTicks(2316), new DateTime(2024, 2, 2, 10, 55, 13, 290, DateTimeKind.Local).AddTicks(2317), 2, 3.5, null },
+                    { 3, "Furniture", "Mediocre product", null, new DateTime(2024, 2, 2, 10, 55, 13, 290, DateTimeKind.Local).AddTicks(2319), new DateTime(2024, 2, 2, 10, 55, 13, 290, DateTimeKind.Local).AddTicks(2319), 3, 3.5, null }
                 });
 
             migrationBuilder.CreateIndex(

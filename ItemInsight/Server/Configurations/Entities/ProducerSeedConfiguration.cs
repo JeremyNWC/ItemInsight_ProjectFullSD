@@ -27,7 +27,16 @@ namespace ItemInsight.Server.Configurations.Entities
                     CompanyName = "NicFurn",
                     ContactNo = "99283749",
                     Email = "nicole@gmail.com"
-                }
+                },
+                 new Producer
+                 {
+                     Id = 3,
+                     Name = "Nicola",
+                     CompanyName = "NicFurn",
+                     ContactNo = "99283749",
+                     Email = "nicole@gmail.com"
+                 }
+
             );
         }
     }

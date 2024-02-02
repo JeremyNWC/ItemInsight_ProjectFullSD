@@ -8,18 +8,9 @@
 <hr />
 <br />
 
-<FormComponent ButtonText = "Create Staff" OnValidSubmit = "CreateStaff" staff = "staff" />
-
 
 @code {
     Staff staff = new Staff();
-
-    private IList<Review>? Reviews;
-
-    protected async override Task OnInitializedAsync()
-    {
-        Reviews = await _client.GetFromJsonAsync<List<Review>>($"{Endpoints.ReviewsEndpoint}");
-    }
 
     private async Task CreateStaff()
     {

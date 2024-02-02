@@ -34,7 +34,17 @@ namespace ItemInsight.Server.Configurations.Entities
                     ProductId = 2,
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
-                }
+                },
+                      new Review
+                      {
+                          Id = 3,
+                          ConsumerReview = "Mediocre product",
+                          Category = "Furniture",
+                          Rating = 3.5,
+                          ProductId = 3,
+                          DateCreated = DateTime.Now,
+                          DateUpdated = DateTime.Now,
+                      }
             );
         }
     }

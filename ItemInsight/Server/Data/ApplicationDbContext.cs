@@ -29,6 +29,8 @@ namespace ItemInsight.Server.Data
             builder.ApplyConfiguration(new UserSeedConfiguration());
             builder.ApplyConfiguration(new ProducerSeedConfiguration());
             builder.ApplyConfiguration(new ReviewSeedConfiguration());
+            builder.ApplyConfiguration(new StaffSeedConfiguration());
+            builder.ApplyConfiguration(new ConsumerSeedConfiguration());
             builder.ApplyConfiguration(new ProductSeedConfiguration());
 
         }
