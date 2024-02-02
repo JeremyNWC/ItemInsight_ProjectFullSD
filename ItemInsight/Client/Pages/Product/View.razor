@@ -1,18 +1,18 @@
-﻿@page "/producers/view/{id:int}"
+﻿@page "/products/view/{id:int}"
 @inject HttpClient _client
 @inject NavigationManager _navManager
 @using ItemInsight.Shared.Domain;
 
 <h3>View</h3>
 
-<FormComponent producer="producer" Disabled="true" />
+<FormComponent product="product" Disabled="true"/>
 
 @code {
     [Parameter] public int id { get; set; }
-    Producer? producer = new Producer();
+    Product? product = new Product();
 
     protected async override Task OnParametersSetAsync()
     {
-        producer = await _client.GetFromJsonAsync<Producer>($"{Endpoints.ProducersEndpoint}/{id}");
+        product = await _client.GetFromJsonAsync<Product>($"{Endpoints.ProductsEndpoint}/{id}");
     }
-}   
+}

@@ -13,12 +13,12 @@
 
     protected async override Task OnParametersSetAsync()
     {
-        producer = await _client.GetFromJsonAsync<Producer>($"{Endpoints.ProductsEndpoint}/{id}");
+        producer = await _client.GetFromJsonAsync<Producer>($"{Endpoints.ProducersEndpoint}/{id}");
     }
 
     async Task EditProducer()
     {
-        await _client.PutAsJsonAsync($"{Endpoints.ProductsEndpoint}/{id}", producer);
+        await _client.PutAsJsonAsync($"{Endpoints.ProducersEndpoint}/{id}", producer);
         _navManager.NavigateTo("/producers/");
     }
 }
