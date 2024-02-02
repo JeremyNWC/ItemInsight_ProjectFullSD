@@ -7,11 +7,7 @@
 <hr />
 <br />
 
-<EditForm Model="@consumer" OnValidSubmit="CreateConsumer">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
-
-</EditForm>
+<FormComponent ButtonText="Create Consumer" consumer="consumer" OnValidSubmit="@CreateConsumer"/>
 
 @code {
     Consumer consumer = new Consumer();
