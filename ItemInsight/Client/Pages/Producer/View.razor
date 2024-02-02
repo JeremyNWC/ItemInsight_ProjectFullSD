@@ -1,0 +1,17 @@
+﻿@page "/producers/view/{id:int}"
+@inject HttpClient _client
+@inject NavigationManager _navManager
+@using ItemInsight.Shared.Domain;
+
+<h3>View</h3>
+<FormComponent producer="producer" Disabled="true" />
+
+@code {
+    [Parameter] public int id { get; set; }
+    Producer? producer = new Producer();
+
+    protected async override Task OnParametersSetAsync()
+    {
+        producer = await _client.GetFromJsonAsync<Producer>($"{Endpoints.ProducersEndpoint}/{id}");
+    }
+}   

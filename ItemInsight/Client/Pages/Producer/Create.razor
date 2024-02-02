@@ -7,46 +7,7 @@
 <hr />
 <br />
 
-<EditForm Model="@producer" OnValidSubmit="CreateProducer">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
-
-<div class="form-group">
-    <label>Name: </label>
-    <div>
-        <InputText @bind-Value="@producer.Name" class="form-control"/>
-        <ValidationMessage For="@(() => producer.Name)"/>
-    </div>
-</div>
-
-<div class="form-group">
-    <label>CompanyName:</label>
-    <div>
-        <InputText @bind-Value="@producer.CompanyName" class="form-control"/>
-        <ValidationMessage For="@(() => producer.CompanyName)"/>
-    </div>
-</div>
-
-<div class="form-group">
-    <label>ContactNo:</label>
-    <div>
-        <InputText @bind-Value="@producer.ContactNo" class="form-control"/>
-        <ValidationMessage For="@(() => producer.ContactNo)"/>
-    </div>
-</div>
-
-<div class="form-group">
-    <label>Email:</label>
-    <div>
-        <InputText @bind-Value="@producer.Email" class="form-control"/>
-        <ValidationMessage For="@(() => producer.Email)"/>
-    </div>
-</div>
-
-<button type="submit" class="btn btn-success btn-block">
-    Create Producer
-</button>
-</EditForm>
+<FormComponent ButtonText="Create Producer" producer="producer" OnValidSubmit="@CreateProducer"/>
 
 @code {
     Producer producer = new Producer();
