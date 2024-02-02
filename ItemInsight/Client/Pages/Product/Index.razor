@@ -43,7 +43,7 @@ else
     <table class="table table-responsive">
         <thread>
             <tr>
-                <th>Name</th>
+                <th>Product</th>
                 <th>Actions</th>
             </tr>
         </thread>
@@ -52,6 +52,8 @@ else
             {
                 <tr>
                     <td>@product.Name</td>
+                    <td><img src="@product.ProductImage" alt="Uploaded Image" style="max-width:180px; max-height:180px;" /></td>
+                    <td>$@product.Cost</td>
                     <td>
                         <a href="/products/view/@product.Id" class="btn btn-primary">
                             <span class="oi oi-book"></span>

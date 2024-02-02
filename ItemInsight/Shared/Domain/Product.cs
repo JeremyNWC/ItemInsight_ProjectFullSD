@@ -11,6 +11,7 @@ namespace ItemInsight.Shared.Domain
         public string? Name { get; set; }
         public string? Category { get; set; }
         public double? Cost { get; set; }
+        public string? ProductImage { get; set; }
         public int ProducerId { get; set; }
         public virtual Producer? Producer { get; set; }
     }
