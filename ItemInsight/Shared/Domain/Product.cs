@@ -13,6 +13,5 @@ namespace ItemInsight.Shared.Domain
         public double? Cost { get; set; }
         public int ProducerId { get; set; }
         public virtual Producer? Producer { get; set; }
-
     }
 }

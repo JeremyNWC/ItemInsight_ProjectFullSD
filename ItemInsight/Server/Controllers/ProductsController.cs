@@ -29,7 +29,7 @@ namespace ItemInsight.Server.Controllers
         {
             //Refactored
             //return await _context.Products.ToListAsync();
-            var products = await _unitOfWork.Products.GetAll();
+            var products = await _unitOfWork.Products.GetAll(includes:q=>q.Include(p=>p.Producer));
             return Ok(products);
         }
 
