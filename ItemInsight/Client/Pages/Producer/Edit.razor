@@ -1,0 +1,24 @@
+﻿@page "/producers/edit/{id:int}"
+@inject HttpClient _client
+@inject NavigationManager _navManager
+@using ItemInsight.Shared.Domain;
+
+<h3 class="card-title">Edit Producer</h3>
+
+<FormComponent ButtonText="Update" OnValidSubmit="EditProducer" producer="producer" />
+
+@code {
+    [Parameter] public int id { get; set; }
+    Producer? producer = new Producer();
+
+    protected async override Task OnParametersSetAsync()
+    {
+        producer = await _client.GetFromJsonAsync<Producer>($"{Endpoints.ProductsEndpoint}/{id}");
+    }
+
+    async Task EditProducer()
+    {
+        await _client.PutAsJsonAsync($"{Endpoints.ProductsEndpoint}/{id}", producer);
+        _navManager.NavigateTo("/producers/");
+    }
+}
