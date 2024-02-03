@@ -21,4 +21,14 @@
         await _client.PutAsJsonAsync($"{Endpoints.ProductsEndpoint}/{id}", product);
         _navManager.NavigateTo("/products/");
     }
+    private async Task HandleFileChanged(InputFileChangeEventArgs e)
+    {
+        var file = e.File;
+
+        var fileName = Path.GetFileName(file.Name);
+
+        product.ProductImage = "images/" + fileName;
+
+        await _client.PostAsJsonAsync(Endpoints.ProductsEndpoint, product);
+    }
 }

@@ -12,13 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ItemInsight.Server.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-<<<<<<<< HEAD:ItemInsight/Server/Migrations/20240202171040_ya.Designer.cs
-    [Migration("20240202171040_ya")]
-    partial class ya
-========
-    [Migration("20240202191643_imagetest")]
-    partial class imagetest
->>>>>>>> 7db411b684bef9180f5f51c436c5f6b9c8b2425e:ItemInsight/Server/Migrations/20240202191643_imagetest.Designer.cs
+    [Migration("20240202225249_CustomValidations")]
+    partial class CustomValidations
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -246,11 +241,7 @@ namespace ItemInsight.Server.Migrations
                         {
                             Id = "3781efa7-66dc-47f0-860f-e506d04102e4",
                             AccessFailedCount = 0,
-<<<<<<<< HEAD:ItemInsight/Server/Migrations/20240202171040_ya.Designer.cs
-                            ConcurrencyStamp = "12fa48c0-e77c-4528-bdf1-83a746b05463",
-========
-                            ConcurrencyStamp = "422cf68f-d782-4688-bfbe-1e60bd724b1e",
->>>>>>>> 7db411b684bef9180f5f51c436c5f6b9c8b2425e:ItemInsight/Server/Migrations/20240202191643_imagetest.Designer.cs
+                            ConcurrencyStamp = "92188344-f9d3-4532-859c-2dc98515d69c",
                             Email = "admin@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Admin",
@@ -258,15 +249,9 @@ namespace ItemInsight.Server.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@LOCALHOST.COM",
-<<<<<<<< HEAD:ItemInsight/Server/Migrations/20240202171040_ya.Designer.cs
-                            PasswordHash = "AQAAAAIAAYagAAAAEJgNfiXmSTZgN4X09OWj+/SczLz2YLpEDvFWfwOSpneEr46gWbo1JhWAFDQMeu6D0A==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEMcw46ShjJ7lFKAH6WH23m0qDSEVn0HlWbPrYV1Oxd9wRib1+pOSDrUFuPRSBwyIkA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "91bda2c2-357e-45fd-b391-c72db1077877",
-========
-                            PasswordHash = "AQAAAAIAAYagAAAAEPDGw/RqSlDil0wbYo3Cno80crelU4auzr96k4cIbJfUCg8BYWqgCzWMO1sgify3zg==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "2d5495e8-7f36-4c96-8f24-c50ed28867d9",
->>>>>>>> 7db411b684bef9180f5f51c436c5f6b9c8b2425e:ItemInsight/Server/Migrations/20240202191643_imagetest.Designer.cs
+                            SecurityStamp = "8399bea9-98a8-4900-bd89-4e4e33024258",
                             TwoFactorEnabled = false,
                             UserName = "admin@localhost.com"
                         },
@@ -274,11 +259,7 @@ namespace ItemInsight.Server.Migrations
                         {
                             Id = "f5eb6ea1-d9cc-40dd-be1a-829c3edf2069",
                             AccessFailedCount = 0,
-<<<<<<<< HEAD:ItemInsight/Server/Migrations/20240202171040_ya.Designer.cs
-                            ConcurrencyStamp = "1c4a3c04-637a-43a2-a17a-e88f64ec1374",
-========
-                            ConcurrencyStamp = "23c811a8-7c0a-4b63-9053-fce15778dbb1",
->>>>>>>> 7db411b684bef9180f5f51c436c5f6b9c8b2425e:ItemInsight/Server/Migrations/20240202191643_imagetest.Designer.cs
+                            ConcurrencyStamp = "5df09547-0114-4d15-aa10-68c023988485",
                             Email = "consumer@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Consumer",
@@ -286,15 +267,9 @@ namespace ItemInsight.Server.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "CONSUMER@GMAIL.COM",
                             NormalizedUserName = "CONSUMER@GMAIL.COM",
-<<<<<<<< HEAD:ItemInsight/Server/Migrations/20240202171040_ya.Designer.cs
-                            PasswordHash = "AQAAAAIAAYagAAAAEGCRRIYo3qxnXBIjtU1xR+jPx0XzNuLFSbo27OaCCXgAiOAbD8y34c8UmpxxOc4Fwg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEDGxwF9OGmSgJFb7UwIxyPP1hiIjWgRjFyQ/1T4uLuI+DrpCs6lG2b0TKht58U9Idg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "6c354a66-950d-43a7-a8c9-35179707b4cf",
-========
-                            PasswordHash = "AQAAAAIAAYagAAAAEAQjkmHIpvs1LJr9U0lSdKlLutqLPG4N5w+twlZxH7xrm/L8GWi1vhsrjjholHRl9Q==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "8ef3a303-d991-4276-a845-bd98c33b81cc",
->>>>>>>> 7db411b684bef9180f5f51c436c5f6b9c8b2425e:ItemInsight/Server/Migrations/20240202191643_imagetest.Designer.cs
+                            SecurityStamp = "29c5c3ee-4602-4fbb-94ba-5684903ac7bd",
                             TwoFactorEnabled = false,
                             UserName = "consumer@gmail.com"
                         },
@@ -302,11 +277,7 @@ namespace ItemInsight.Server.Migrations
                         {
                             Id = "2807eff2-b8a5-482d-bdb3-a2291dbc60a8",
                             AccessFailedCount = 0,
-<<<<<<<< HEAD:ItemInsight/Server/Migrations/20240202171040_ya.Designer.cs
-                            ConcurrencyStamp = "e3890209-91f0-485a-81e7-41f7b90afbbe",
-========
-                            ConcurrencyStamp = "8eebda65-eefb-46b7-aae8-b8689cec775d",
->>>>>>>> 7db411b684bef9180f5f51c436c5f6b9c8b2425e:ItemInsight/Server/Migrations/20240202191643_imagetest.Designer.cs
+                            ConcurrencyStamp = "a380241a-5cf9-471c-b5bf-01535c686c0c",
                             Email = "producer@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Producer",
@@ -314,15 +285,9 @@ namespace ItemInsight.Server.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "PRODUCER@GMAIL.COM",
                             NormalizedUserName = "PRODUCER@GMAIL.COM",
-<<<<<<<< HEAD:ItemInsight/Server/Migrations/20240202171040_ya.Designer.cs
-                            PasswordHash = "AQAAAAIAAYagAAAAEBQoz4eEBeudLgwt176NIdexnY5RJ6Ltqd5QxChHQ/T9Z3jA1DCSxlnkeIdoaBgryw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEG+t2jjXvj5NIRngA+HCmSngDK1LcYVKHkEsmEcq2hb+blZJShK+lAgrXaNI9SWQBg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "a2367c7e-82bf-46ff-8700-b27a91d2e91f",
-========
-                            PasswordHash = "AQAAAAIAAYagAAAAEC4IK9Rg1gfMzI4EkOHZUGYenqprEBlzc7yjPkTdkWLGzKVoGvGE1uojHO/JmkcWWw==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "fde19a4f-d815-4639-b0c9-4df698a11709",
->>>>>>>> 7db411b684bef9180f5f51c436c5f6b9c8b2425e:ItemInsight/Server/Migrations/20240202191643_imagetest.Designer.cs
+                            SecurityStamp = "ec2027cb-d3aa-49d8-8b76-fa84542d9d6b",
                             TwoFactorEnabled = false,
                             UserName = "producer@gmail.com"
                         });
@@ -337,6 +302,7 @@ namespace ItemInsight.Server.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("ContactNo")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CreatedBy")
@@ -349,13 +315,13 @@ namespace ItemInsight.Server.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -397,6 +363,7 @@ namespace ItemInsight.Server.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ContactNo")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CreatedBy")
@@ -409,10 +376,13 @@ namespace ItemInsight.Server.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -501,13 +471,8 @@ namespace ItemInsight.Server.Migrations
                             Id = 1,
                             Category = "Fashion",
                             Cost = 13.4,
-<<<<<<<< HEAD:ItemInsight/Server/Migrations/20240202171040_ya.Designer.cs
-                            DateCreated = new DateTime(2024, 2, 3, 1, 10, 40, 725, DateTimeKind.Local).AddTicks(9258),
-                            DateUpdated = new DateTime(2024, 2, 3, 1, 10, 40, 725, DateTimeKind.Local).AddTicks(9259),
-========
-                            DateCreated = new DateTime(2024, 2, 3, 3, 16, 42, 949, DateTimeKind.Local).AddTicks(8327),
-                            DateUpdated = new DateTime(2024, 2, 3, 3, 16, 42, 949, DateTimeKind.Local).AddTicks(8333),
->>>>>>>> 7db411b684bef9180f5f51c436c5f6b9c8b2425e:ItemInsight/Server/Migrations/20240202191643_imagetest.Designer.cs
+                            DateCreated = new DateTime(2024, 2, 3, 6, 52, 49, 512, DateTimeKind.Local).AddTicks(9853),
+                            DateUpdated = new DateTime(2024, 2, 3, 6, 52, 49, 512, DateTimeKind.Local).AddTicks(9860),
                             Name = "Dotted Dress",
                             ProducerId = 1,
                             ProductImage = "images/aboutus.jpg"
@@ -517,13 +482,8 @@ namespace ItemInsight.Server.Migrations
                             Id = 2,
                             Category = "Furniture",
                             Cost = 99.900000000000006,
-<<<<<<<< HEAD:ItemInsight/Server/Migrations/20240202171040_ya.Designer.cs
-                            DateCreated = new DateTime(2024, 2, 3, 1, 10, 40, 725, DateTimeKind.Local).AddTicks(9261),
-                            DateUpdated = new DateTime(2024, 2, 3, 1, 10, 40, 725, DateTimeKind.Local).AddTicks(9261),
-========
-                            DateCreated = new DateTime(2024, 2, 3, 3, 16, 42, 949, DateTimeKind.Local).AddTicks(8337),
-                            DateUpdated = new DateTime(2024, 2, 3, 3, 16, 42, 949, DateTimeKind.Local).AddTicks(8339),
->>>>>>>> 7db411b684bef9180f5f51c436c5f6b9c8b2425e:ItemInsight/Server/Migrations/20240202191643_imagetest.Designer.cs
+                            DateCreated = new DateTime(2024, 2, 3, 6, 52, 49, 512, DateTimeKind.Local).AddTicks(9866),
+                            DateUpdated = new DateTime(2024, 2, 3, 6, 52, 49, 512, DateTimeKind.Local).AddTicks(9869),
                             Name = "Sofa",
                             ProducerId = 2,
                             ProductImage = "images/aboutus1.jpg"
@@ -533,13 +493,8 @@ namespace ItemInsight.Server.Migrations
                             Id = 3,
                             Category = "Furniture",
                             Cost = 99.900000000000006,
-<<<<<<<< HEAD:ItemInsight/Server/Migrations/20240202171040_ya.Designer.cs
-                            DateCreated = new DateTime(2024, 2, 3, 1, 10, 40, 725, DateTimeKind.Local).AddTicks(9263),
-                            DateUpdated = new DateTime(2024, 2, 3, 1, 10, 40, 725, DateTimeKind.Local).AddTicks(9263),
-========
-                            DateCreated = new DateTime(2024, 2, 3, 3, 16, 42, 949, DateTimeKind.Local).AddTicks(8342),
-                            DateUpdated = new DateTime(2024, 2, 3, 3, 16, 42, 949, DateTimeKind.Local).AddTicks(8343),
->>>>>>>> 7db411b684bef9180f5f51c436c5f6b9c8b2425e:ItemInsight/Server/Migrations/20240202191643_imagetest.Designer.cs
+                            DateCreated = new DateTime(2024, 2, 3, 6, 52, 49, 512, DateTimeKind.Local).AddTicks(9874),
+                            DateUpdated = new DateTime(2024, 2, 3, 6, 52, 49, 512, DateTimeKind.Local).AddTicks(9877),
                             Name = "Sofaz",
                             ProducerId = 3,
                             ProductImage = "images/homepage.jpg"
@@ -590,13 +545,8 @@ namespace ItemInsight.Server.Migrations
                             Id = 1,
                             Category = "Fashion",
                             ConsumerReview = "Wonderful product",
-<<<<<<<< HEAD:ItemInsight/Server/Migrations/20240202171040_ya.Designer.cs
-                            DateCreated = new DateTime(2024, 2, 3, 1, 10, 40, 725, DateTimeKind.Local).AddTicks(8490),
-                            DateUpdated = new DateTime(2024, 2, 3, 1, 10, 40, 725, DateTimeKind.Local).AddTicks(8513),
-========
-                            DateCreated = new DateTime(2024, 2, 3, 3, 16, 42, 949, DateTimeKind.Local).AddTicks(6328),
-                            DateUpdated = new DateTime(2024, 2, 3, 3, 16, 42, 949, DateTimeKind.Local).AddTicks(6348),
->>>>>>>> 7db411b684bef9180f5f51c436c5f6b9c8b2425e:ItemInsight/Server/Migrations/20240202191643_imagetest.Designer.cs
+                            DateCreated = new DateTime(2024, 2, 3, 6, 52, 49, 512, DateTimeKind.Local).AddTicks(7785),
+                            DateUpdated = new DateTime(2024, 2, 3, 6, 52, 49, 512, DateTimeKind.Local).AddTicks(7805),
                             ProductId = 1,
                             Rating = 5.0
                         },
@@ -605,13 +555,8 @@ namespace ItemInsight.Server.Migrations
                             Id = 2,
                             Category = "Furniture",
                             ConsumerReview = "Mediocre product",
-<<<<<<<< HEAD:ItemInsight/Server/Migrations/20240202171040_ya.Designer.cs
-                            DateCreated = new DateTime(2024, 2, 3, 1, 10, 40, 725, DateTimeKind.Local).AddTicks(8515),
-                            DateUpdated = new DateTime(2024, 2, 3, 1, 10, 40, 725, DateTimeKind.Local).AddTicks(8515),
-========
-                            DateCreated = new DateTime(2024, 2, 3, 3, 16, 42, 949, DateTimeKind.Local).AddTicks(6352),
-                            DateUpdated = new DateTime(2024, 2, 3, 3, 16, 42, 949, DateTimeKind.Local).AddTicks(6354),
->>>>>>>> 7db411b684bef9180f5f51c436c5f6b9c8b2425e:ItemInsight/Server/Migrations/20240202191643_imagetest.Designer.cs
+                            DateCreated = new DateTime(2024, 2, 3, 6, 52, 49, 512, DateTimeKind.Local).AddTicks(7808),
+                            DateUpdated = new DateTime(2024, 2, 3, 6, 52, 49, 512, DateTimeKind.Local).AddTicks(7809),
                             ProductId = 2,
                             Rating = 3.5
                         },
@@ -620,13 +565,8 @@ namespace ItemInsight.Server.Migrations
                             Id = 3,
                             Category = "Furniture",
                             ConsumerReview = "Mediocre product",
-<<<<<<<< HEAD:ItemInsight/Server/Migrations/20240202171040_ya.Designer.cs
-                            DateCreated = new DateTime(2024, 2, 3, 1, 10, 40, 725, DateTimeKind.Local).AddTicks(8517),
-                            DateUpdated = new DateTime(2024, 2, 3, 1, 10, 40, 725, DateTimeKind.Local).AddTicks(8517),
-========
-                            DateCreated = new DateTime(2024, 2, 3, 3, 16, 42, 949, DateTimeKind.Local).AddTicks(6357),
-                            DateUpdated = new DateTime(2024, 2, 3, 3, 16, 42, 949, DateTimeKind.Local).AddTicks(6358),
->>>>>>>> 7db411b684bef9180f5f51c436c5f6b9c8b2425e:ItemInsight/Server/Migrations/20240202191643_imagetest.Designer.cs
+                            DateCreated = new DateTime(2024, 2, 3, 6, 52, 49, 512, DateTimeKind.Local).AddTicks(7814),
+                            DateUpdated = new DateTime(2024, 2, 3, 6, 52, 49, 512, DateTimeKind.Local).AddTicks(7815),
                             ProductId = 3,
                             Rating = 3.5
                         });
@@ -659,11 +599,8 @@ namespace ItemInsight.Server.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -680,8 +617,7 @@ namespace ItemInsight.Server.Migrations
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "smithies@gmail.com",
-                            Name = "JohnSmith",
-                            Password = "Jeremy"
+                            Name = "JohnSmith"
                         });
                 });
 
