@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ItemInsight.Server.Migrations
 {
     /// <inheritdoc />
-    public partial class test : Migration
+    public partial class ya : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -63,6 +63,7 @@ namespace ItemInsight.Server.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ContactNo = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateUpdated = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -156,9 +157,10 @@ namespace ItemInsight.Server.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ContactNo = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ContactNo = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateUpdated = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -342,18 +344,18 @@ namespace ItemInsight.Server.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "2807eff2-b8a5-482d-bdb3-a2291dbc60a8", 0, "422a96d6-27a0-4320-8d48-fed0a7a2fab8", "producer@gmail.com", false, "Producer", "User", false, null, "PRODUCER@GMAIL.COM", "PRODUCER@GMAIL.COM", "AQAAAAIAAYagAAAAEItKjyV4/V8armxv5fZOV+D99J+2Ep4rBS1rZV/ttuFxYT2Va7slaB3Tme2TPXYK5Q==", null, false, "847d9f90-06c3-4a7b-8142-f411421105ba", false, "producer@gmail.com" },
-                    { "3781efa7-66dc-47f0-860f-e506d04102e4", 0, "b331a881-3b66-4dbd-b345-2bd0d5a1ba71", "admin@gmail.com", false, "Admin", "User", false, null, "ADMIN@GMAIL.COM", "ADMIN@LOCALHOST.COM", "AQAAAAIAAYagAAAAEAtPZJCx1ISf1W+lSjf+zigRUqpfFQyLR1WAVXyL1RGm2vhKazDXCPoWRzEFBW9exQ==", null, false, "b87bddcf-d18f-4fc6-8dc0-c412f6f8d726", false, "admin@localhost.com" },
-                    { "f5eb6ea1-d9cc-40dd-be1a-829c3edf2069", 0, "869e4da3-4787-4a40-aca0-8f76c743bb50", "consumer@gmail.com", false, "Consumer", "User", false, null, "CONSUMER@GMAIL.COM", "CONSUMER@GMAIL.COM", "AQAAAAIAAYagAAAAECuK5WZ8kQViLLYMgvfXnkGUypKougwGE0VcE1TSs3BiH+dpKZUzbIzrAEHU0Kfd/g==", null, false, "57ab14d7-13ff-42a6-905f-802c1588b077", false, "consumer@gmail.com" }
+                    { "2807eff2-b8a5-482d-bdb3-a2291dbc60a8", 0, "e3890209-91f0-485a-81e7-41f7b90afbbe", "producer@gmail.com", false, "Producer", "User", false, null, "PRODUCER@GMAIL.COM", "PRODUCER@GMAIL.COM", "AQAAAAIAAYagAAAAEBQoz4eEBeudLgwt176NIdexnY5RJ6Ltqd5QxChHQ/T9Z3jA1DCSxlnkeIdoaBgryw==", null, false, "a2367c7e-82bf-46ff-8700-b27a91d2e91f", false, "producer@gmail.com" },
+                    { "3781efa7-66dc-47f0-860f-e506d04102e4", 0, "12fa48c0-e77c-4528-bdf1-83a746b05463", "admin@gmail.com", false, "Admin", "User", false, null, "ADMIN@GMAIL.COM", "ADMIN@LOCALHOST.COM", "AQAAAAIAAYagAAAAEJgNfiXmSTZgN4X09OWj+/SczLz2YLpEDvFWfwOSpneEr46gWbo1JhWAFDQMeu6D0A==", null, false, "91bda2c2-357e-45fd-b391-c72db1077877", false, "admin@localhost.com" },
+                    { "f5eb6ea1-d9cc-40dd-be1a-829c3edf2069", 0, "1c4a3c04-637a-43a2-a17a-e88f64ec1374", "consumer@gmail.com", false, "Consumer", "User", false, null, "CONSUMER@GMAIL.COM", "CONSUMER@GMAIL.COM", "AQAAAAIAAYagAAAAEGCRRIYo3qxnXBIjtU1xR+jPx0XzNuLFSbo27OaCCXgAiOAbD8y34c8UmpxxOc4Fwg==", null, false, "6c354a66-950d-43a7-a8c9-35179707b4cf", false, "consumer@gmail.com" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Consumers",
-                columns: new[] { "Id", "ContactNo", "CreatedBy", "DateCreated", "DateUpdated", "Email", "Name", "UpdatedBy" },
+                columns: new[] { "Id", "ContactNo", "CreatedBy", "DateCreated", "DateUpdated", "Email", "Name", "Password", "UpdatedBy" },
                 values: new object[,]
                 {
-                    { 1, "87538922", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "adenGaming@gmail.com", "Aden", null },
-                    { 2, "92830481", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "clare@gmail.com", "Clare", null }
+                    { 1, "87538922", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "adenGaming@gmail.com", "Aden", null, null },
+                    { 2, "92830481", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "clare@gmail.com", "Clare", null, null }
                 });
 
             migrationBuilder.InsertData(
@@ -368,8 +370,8 @@ namespace ItemInsight.Server.Migrations
 
             migrationBuilder.InsertData(
                 table: "Staffs",
-                columns: new[] { "Id", "ContactNo", "CreatedBy", "DateCreated", "DateUpdated", "Email", "Name", "UpdatedBy" },
-                values: new object[] { 1, "81234567", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "smithies@gmail.com", "JohnSmith", null });
+                columns: new[] { "Id", "ContactNo", "CreatedBy", "DateCreated", "DateUpdated", "Email", "Name", "Password", "UpdatedBy" },
+                values: new object[] { 1, "81234567", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "smithies@gmail.com", "JohnSmith", "Jeremy", null });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
@@ -386,9 +388,9 @@ namespace ItemInsight.Server.Migrations
                 columns: new[] { "Id", "Category", "Cost", "CreatedBy", "DateCreated", "DateUpdated", "Name", "ProducerId", "UpdatedBy" },
                 values: new object[,]
                 {
-                    { 1, "Fashion", 13.4, null, new DateTime(2024, 2, 2, 11, 27, 23, 518, DateTimeKind.Local).AddTicks(8666), new DateTime(2024, 2, 2, 11, 27, 23, 518, DateTimeKind.Local).AddTicks(8669), "Dotted Dress", 1, null },
-                    { 2, "Furniture", 99.900000000000006, null, new DateTime(2024, 2, 2, 11, 27, 23, 518, DateTimeKind.Local).AddTicks(8673), new DateTime(2024, 2, 2, 11, 27, 23, 518, DateTimeKind.Local).AddTicks(8674), "Sofa", 2, null },
-                    { 3, "Furniture", 99.900000000000006, null, new DateTime(2024, 2, 2, 11, 27, 23, 518, DateTimeKind.Local).AddTicks(8677), new DateTime(2024, 2, 2, 11, 27, 23, 518, DateTimeKind.Local).AddTicks(8678), "Sofaz", 3, null }
+                    { 1, "Fashion", 13.4, null, new DateTime(2024, 2, 3, 1, 10, 40, 725, DateTimeKind.Local).AddTicks(9258), new DateTime(2024, 2, 3, 1, 10, 40, 725, DateTimeKind.Local).AddTicks(9259), "Dotted Dress", 1, null },
+                    { 2, "Furniture", 99.900000000000006, null, new DateTime(2024, 2, 3, 1, 10, 40, 725, DateTimeKind.Local).AddTicks(9261), new DateTime(2024, 2, 3, 1, 10, 40, 725, DateTimeKind.Local).AddTicks(9261), "Sofa", 2, null },
+                    { 3, "Furniture", 99.900000000000006, null, new DateTime(2024, 2, 3, 1, 10, 40, 725, DateTimeKind.Local).AddTicks(9263), new DateTime(2024, 2, 3, 1, 10, 40, 725, DateTimeKind.Local).AddTicks(9263), "Sofaz", 3, null }
                 });
 
             migrationBuilder.InsertData(
@@ -396,9 +398,9 @@ namespace ItemInsight.Server.Migrations
                 columns: new[] { "Id", "Category", "ConsumerReview", "CreatedBy", "DateCreated", "DateUpdated", "ProductId", "Rating", "UpdatedBy" },
                 values: new object[,]
                 {
-                    { 1, "Fashion", "Wonderful product", null, new DateTime(2024, 2, 2, 11, 27, 23, 518, DateTimeKind.Local).AddTicks(6931), new DateTime(2024, 2, 2, 11, 27, 23, 518, DateTimeKind.Local).AddTicks(6959), 1, 5.0, null },
-                    { 2, "Furniture", "Mediocre product", null, new DateTime(2024, 2, 2, 11, 27, 23, 518, DateTimeKind.Local).AddTicks(6964), new DateTime(2024, 2, 2, 11, 27, 23, 518, DateTimeKind.Local).AddTicks(6965), 2, 3.5, null },
-                    { 3, "Furniture", "Mediocre product", null, new DateTime(2024, 2, 2, 11, 27, 23, 518, DateTimeKind.Local).AddTicks(6968), new DateTime(2024, 2, 2, 11, 27, 23, 518, DateTimeKind.Local).AddTicks(6969), 3, 3.5, null }
+                    { 1, "Fashion", "Wonderful product", null, new DateTime(2024, 2, 3, 1, 10, 40, 725, DateTimeKind.Local).AddTicks(8490), new DateTime(2024, 2, 3, 1, 10, 40, 725, DateTimeKind.Local).AddTicks(8513), 1, 5.0, null },
+                    { 2, "Furniture", "Mediocre product", null, new DateTime(2024, 2, 3, 1, 10, 40, 725, DateTimeKind.Local).AddTicks(8515), new DateTime(2024, 2, 3, 1, 10, 40, 725, DateTimeKind.Local).AddTicks(8515), 2, 3.5, null },
+                    { 3, "Furniture", "Mediocre product", null, new DateTime(2024, 2, 3, 1, 10, 40, 725, DateTimeKind.Local).AddTicks(8517), new DateTime(2024, 2, 3, 1, 10, 40, 725, DateTimeKind.Local).AddTicks(8517), 3, 3.5, null }
                 });
 
             migrationBuilder.CreateIndex(

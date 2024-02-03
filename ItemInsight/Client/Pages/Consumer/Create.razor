@@ -3,15 +3,11 @@
 @inject NavigationManager _navManager
 @using ItemInsight.Shared.Domain;
 
-<h3 class="card-title">Create new consumer</h3>
+<h3 class="card-title">Create New Consumer</h3>
 <hr />
 <br />
 
-<EditForm Model="@consumer" OnValidSubmit="CreateConsumer">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
-
-</EditForm>
+<FormComponent ButtonText="Create Consumer" consumer="consumer" OnValidSubmit="@CreateConsumer"/>
 
 @code {
     Consumer consumer = new Consumer();

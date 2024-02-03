@@ -3,11 +3,11 @@
 @inject NavigationManager _navManager
 @using ItemInsight.Shared.Domain;
 
-
 <h3 class="card-title">Create New Staff</h3>
 <hr />
 <br />
 
+<FormComponent ButtonText="Create Staff" staff="staff" OnValidSubmit="@CreateStaff"/>
 
 @code {
     Staff staff = new Staff();
@@ -17,5 +17,4 @@
         await _client.PostAsJsonAsync(Endpoints.StaffsEndpoint, staff);
         _navManager.NavigateTo("/staffs/");
     }
-
 }

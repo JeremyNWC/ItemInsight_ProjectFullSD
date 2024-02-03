@@ -1,57 +1,45 @@
 ﻿@page "/consumers/"
+
 @inject HttpClient _client
 @inject IJSRuntime js
 @attribute [Authorize]
 @using ItemInsight.Shared.Domain;
 
-<h3 class="card-title">ItemInsight Consumer</h3>
+<h3 class="card-title">Consumers</h3>
+
 <a href="/consumers/create" class="btn btn-secondary">
     <span class="oi oi-plus"></span>
-    create new consumer
+    Create New Consumer
 </a>
-<br/>
-<br/>
+<br />
+<br />
 
-@code {
-    private List<Consumer>? Consumers;
-
-    protected async override Task OnInitializedAsync()
-    {
-        Consumers = await _client.GetFromJsonAsync<List<Consumer>>($"{Endpoints.ConsumersEndpoint}");
-    }
-
-    async Task Delete(int consumerId)
-    {
-        if(Consumers != null)
-        {
-            var consumer = Consumers.First(q => q.Id == consumerId);
-            var confirm = await js.InvokeAsync<bool>("confirm", $"Do you want to delete {consumer.Name}?");
-            if(confirm)
-            {
-                await _client.DeleteAsync($"{Endpoints.ConsumersEndpoint}/{consumerId}");
-                await OnInitializedAsync();
-            }
-        }
-    }
-}
 @if (Consumers == null)
 {
-    <div class="alert alert-info">Loading Consumers...</div>
+    <div class="alert alert-info">Loading Consumers..</div>
 }
 else
 {
     <table class="table table-responsive">
-        <thread>
+        <thead>
             <tr>
                 <th>Name</th>
+                <th>Contact</th>
+                <th>Email</th>
+                <th>Password</th>
                 <th>Actions</th>
+               
             </tr>
-        </thread>
+        </thead>
         <tbody>
             @foreach (var consumer in Consumers)
             {
                 <tr>
                     <td>@consumer.Name</td>
+                    <td>@consumer.ContactNo</td>
+                    <td>@consumer.Email</td>
+                    <td>@consumer.Password</td>
+                   
                     <td>
                         <a href="/consumers/view/@consumer.Id" class="btn btn-primary">
                             <span class="oi oi-book"></span>
@@ -59,7 +47,7 @@ else
                         <a href="/consumers/edit/@consumer.Id" class="btn btn-warning">
                             <span class="oi oi-pencil"></span>
                         </a>
-                        <button class="btn btn-danger" @onclick="@(()=>Delete(consumer.Id))">
+                        <button class="btn btn-danger" @onclick="(() => Delete(consumer.Id))">
                             <span class="oi oi-delete"></span>
                         </button>
                     </td>
@@ -67,4 +55,52 @@ else
             }
         </tbody>
     </table>
+
+}
+
+@code {
+    private List<Consumer>? Consumers;
+
+    protected async override Task OnInitializedAsync()
+
+    {
+        Consumers = await _client.GetFromJsonAsync<List<Consumer>>($"{Endpoints.ConsumersEndpoint}");
+    }
+
+    async Task Delete(int consumerId)
+    {
+        if (Consumers != null)
+        {
+            var consumer = Consumers.FirstOrDefault(q => q.Id == consumerId);
+            if (consumer != null)
+            {
+                var confirm = await js.InvokeAsync<bool>("confirm", $"Do you want to delete {consumer.Name}?");
+                if (confirm)
+                {
+                    try
+                    {
+                        var response = await _client.DeleteAsync($"{Endpoints.ConsumersEndpoint}/{consumerId}");
+                        if (response.IsSuccessStatusCode)
+                        {
+                            Consumers.Remove(consumer);
+                            StateHasChanged(); // To refresh the UI
+                        }
+                        else
+                        {
+                            // Handle the error, maybe show a message to the user
+                            var error = await response.Content.ReadAsStringAsync();
+                            Console.WriteLine(error);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        // Log or handle the exception
+                        Console.WriteLine(ex.Message);
+                    }
+                }
+            }
+        }
+    }
+
+
 }
