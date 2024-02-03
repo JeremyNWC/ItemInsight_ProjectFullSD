@@ -41,23 +41,23 @@
 else
 {
     <table class="table table-responsive">
-        <thread>
+        <thead>
             <tr>
                 <th>Name</th>
-                <th>CompanyName</th>
                 <th>ContactNo</th>
                 <th>Email</th>
+                <th>Password</th>
                 <th>Actions</th>
             </tr>
-        </thread>
+        </thead>
         <tbody>
             @foreach (var producer in Producers)
             {
                 <tr>
                     <td>@producer.Name</td>
-                    <td>@producer.CompanyName</td>
                     <td>@producer.ContactNo</td>
                     <td>@producer.Email</td>
+                    <td>@producer.Password</td>
                     <td>
                         <a href="/producers/view/@producer.Id" class="btn btn-primary">
                             <span class="oi oi-book"></span>

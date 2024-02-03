@@ -14,15 +14,14 @@ namespace ItemInsight.Shared.Domain
         public string? Name { get; set; }
 
         [Required]
-        public string? CompanyName { get; set; }
-
-        [Required]
         public string? ContactNo { get; set; }
 
         [Required]
         [DataType(DataType.EmailAddress, ErrorMessage = "Email Address is not a valid email")]
         [EmailAddress]
         public string? Email { get; set; }
+        [Required]
+        public string? Password { get; set; }
 
     }
 }

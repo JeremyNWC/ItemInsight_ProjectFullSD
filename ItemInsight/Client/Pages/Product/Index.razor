@@ -34,6 +34,7 @@
         }
     }
 }
+
 @if (Products == null)
 {
     <div class="alert alert-info">Loading Products...</div>
@@ -41,12 +42,14 @@
 else
 {
     <table class="table table-responsive">
-        <thread>
+        <thead>
             <tr>
                 <th>Product</th>
+                <th>Image</th>
+                <th>Cost</th>
                 <th>Actions</th>
             </tr>
-        </thread>
+        </thead>
         <tbody>
             @foreach (var product in Products)
             {

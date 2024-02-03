@@ -20,7 +20,7 @@ namespace ItemInsight.Server.Configurations.Entities
                   Name = "JohnSmith",
                   ContactNo = "81234567",
                   Email = "smithies@gmail.com",
-                  Password = "Jeremy"
+                  Password = "johnsmith"
               }
             );
         }

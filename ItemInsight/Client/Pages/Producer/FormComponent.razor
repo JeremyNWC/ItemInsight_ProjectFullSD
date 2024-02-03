@@ -16,16 +16,6 @@
 
     <fieldset disabled="@Disabled">
     <div class="form-group">
-        <label>CompanyName:</label>
-        <div>
-            <InputText @bind-Value="@producer.CompanyName" class="form-control" />
-            <ValidationMessage For="@(() => producer.CompanyName)" />
-        </div>
-    </div>
-    </fieldset>
-
-    <fieldset disabled="@Disabled">
-    <div class="form-group">
         <label>ContactNo:</label>
         <div>
             <InputText @bind-Value="@producer.ContactNo" class="form-control" />
@@ -42,6 +32,16 @@
             <ValidationMessage For="@(() => producer.Email)" />
         </div>
     </div>
+    </fieldset>
+
+    <fieldset disabled="@Disabled">
+        <div class="form-group">
+            <label>Password:</label>
+            <div>
+                <InputText @bind-Value="@producer.Password" class="form-control" />
+                <ValidationMessage For="@(() => producer.Password)" />
+            </div>
+        </div>
     </fieldset>
 
     @if (!Disabled)

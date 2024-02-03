@@ -15,26 +15,26 @@ namespace ItemInsight.Server.Configurations.Entities
                 {
                     Id = 1,
                     Name = "Jay",
-                    CompanyName = "JaysFashion",
                     ContactNo = "81079182",
                     Email = "jay@gmail.com",
+                    Password = "jay",
                 },
 
                 new Producer
                 {
                     Id = 2,
                     Name = "Nicole",
-                    CompanyName = "NicFurn",
                     ContactNo = "99283749",
-                    Email = "nicole@gmail.com"
+                    Email = "nicole@gmail.com",
+                    Password = "nicole",
                 },
                  new Producer
                  {
                      Id = 3,
                      Name = "Nicola",
-                     CompanyName = "NicFurn",
                      ContactNo = "99283749",
-                     Email = "nicole@gmail.com"
+                     Email = "nicole@gmail.com",
+                     Password = "nicola"
                  }
 
             );

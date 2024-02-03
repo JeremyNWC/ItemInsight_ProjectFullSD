@@ -14,50 +14,6 @@
 <br />
 <br />
 
-@if (Consumers == null)
-{
-    <div class="alert alert-info">Loading Consumers..</div>
-}
-else
-{
-    <table class="table table-responsive">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Contact</th>
-                <th>Email</th>
-                <th>Password</th>
-                <th>Actions</th>
-               
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var consumer in Consumers)
-            {
-                <tr>
-                    <td>@consumer.Name</td>
-                    <td>@consumer.ContactNo</td>
-                    <td>@consumer.Email</td>
-                    <td>@consumer.Password</td>
-                   
-                    <td>
-                        <a href="/consumers/view/@consumer.Id" class="btn btn-primary">
-                            <span class="oi oi-book"></span>
-                        </a>
-                        <a href="/consumers/edit/@consumer.Id" class="btn btn-warning">
-                            <span class="oi oi-pencil"></span>
-                        </a>
-                        <button class="btn btn-danger" @onclick="(() => Delete(consumer.Id))">
-                            <span class="oi oi-delete"></span>
-                        </button>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-
-}
-
 @code {
     private List<Consumer>? Consumers;
 
@@ -101,6 +57,49 @@ else
             }
         }
     }
+}
 
+@if (Consumers == null)
+{
+    <div class="alert alert-info">Loading Consumers..</div>
+}
+else
+{
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Contact</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Actions</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var consumer in Consumers)
+            {
+                <tr>
+                    <td>@consumer.Name</td>
+                    <td>@consumer.ContactNo</td>
+                    <td>@consumer.Email</td>
+                    <td>@consumer.Password</td>
+
+                    <td>
+                        <a href="/consumers/view/@consumer.Id" class="btn btn-primary">
+                            <span class="oi oi-book"></span>
+                        </a>
+                        <a href="/consumers/edit/@consumer.Id" class="btn btn-warning">
+                            <span class="oi oi-pencil"></span>
+                        </a>
+                        <button class="btn btn-danger" @onclick="(() => Delete(consumer.Id))">
+                            <span class="oi oi-delete"></span>
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 
 }
+

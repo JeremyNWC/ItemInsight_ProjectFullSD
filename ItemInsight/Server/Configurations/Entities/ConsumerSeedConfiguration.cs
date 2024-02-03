@@ -20,6 +20,7 @@ namespace ItemInsight.Server.Configurations.Entities
                    Name = "Aden",
                    ContactNo = "87538922",
                    Email = "adenGaming@gmail.com",
+                   Password = "Aden",
                },
                new Consumer
                {
@@ -27,6 +28,7 @@ namespace ItemInsight.Server.Configurations.Entities
                    Name = "Clare",
                    ContactNo = "92830481",
                    Email = "clare@gmail.com",
+                   Password = "Clare"
                }
             );
         }
