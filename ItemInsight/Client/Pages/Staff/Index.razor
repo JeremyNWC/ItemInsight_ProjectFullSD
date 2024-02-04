@@ -5,7 +5,25 @@
 @attribute [Authorize]
 @using ItemInsight.Shared.Domain;
 
-<h3 class="card-title">Staffs</h3>
+<head>
+    <style>
+        body {
+            background: linear-gradient(to bottom right, #070720, #171738, #070720);
+            color: #ffffff; /* Optionally, set text color to white for better readability */
+        }
+
+        table {
+            color: white; /* Set text color for all table content */
+        }
+
+        th, td {
+            color: white; /* Set text color for table headers and cells */
+            border: 1px solid white; /* Optional: Add border for better visibility */
+        }
+    </style>
+</head>
+
+<h3 class="card-title"><b>ItemInsight Staffs</b></h3>
 
 <a href="/staffs/create" class="btn btn-secondary">
     <span class="oi oi-plus"></span>
@@ -23,11 +41,11 @@ else
     <table class="table table-responsive">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Contact</th>
-                <th>Email</th>
-                <th>Password</th>
-                <th>Actions</th>
+                <th><b>Name</b></th>
+                <th><b>Contact</b></th>
+                <th><b>Email</b></th>
+                <th><b>Password</b></th>
+                <th><b>Actions</b></th>
 
             </tr>
         </thead>
@@ -35,10 +53,10 @@ else
             @foreach (var staff in Staffs)
             {
                 <tr>
-                    <td>@staff.Name</td>
-                    <td>@staff.ContactNo</td>
-                    <td>@staff.Email</td>
-                    <td>@staff.Password</td>
+                    <td><b>@staff.Name</b></td>
+                    <td><b>@staff.ContactNo</b></td>
+                    <td><b>@staff.Email</b></td>
+                    <td><b>@staff.Password</b></td>
 
                     <td>
                         <a href="/staffs/view/@staff.Id" class="btn btn-primary">

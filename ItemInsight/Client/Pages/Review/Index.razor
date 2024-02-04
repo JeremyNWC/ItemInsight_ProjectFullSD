@@ -4,7 +4,24 @@
 @attribute [Authorize]
 @using ItemInsight.Shared.Domain
 
-<h3 class="card-title">ItemInsight Review</h3>
+<head>
+    <style>
+        body {
+            background: linear-gradient(to bottom right, #FF6F61, #FDBB2D, #8B78E6);
+        }
+
+        table {
+            color: black; /* Set text color for all table content to black */
+        }
+
+        th, td {
+            color: black; /* Set text color for table headers and cells to black */
+            border: 1px solid black; /* Optional: Add border for better visibility */
+        }
+    </style>
+</head>
+
+<h3 class="card-title"><b>ItemInsight Review</b></h3>
 <a href="/reviews/create" class="btn btn-secondary">
     <span class="oi oi-plus"></span>
     create new review
@@ -46,10 +63,10 @@ else
     <table class="table table-responsive">
         <thead>
             <tr>
-                <th>Product</th>
-                <th>Review</th>
-                <th>Rating</th>
-                <th>Actions</th>
+                <th><b>Product</b></th>
+                <th><b>Review</b></th>
+                <th><b>Rating</b></th>
+                <th><b>Actions</b></th>
             </tr>
         </thead>
         <tbody>
@@ -59,8 +76,8 @@ else
 
                 <tr>
                     <td><img src="@ImageProduct.ProductImage"alt="Uploaded Image" style="max-width:180px; max-height:180px;" /></td>
-                    <td>@review.ConsumerReview</td>
-                    <td>@review.Rating</td>
+                    <td><b>@review.ConsumerReview</b></td>
+                    <td><b>@review.Rating</b></td>
                     <td>
                         <a href="/reviews/view/@review.Id" class="btn btn-primary">
                             <span class="oi oi-book"></span>

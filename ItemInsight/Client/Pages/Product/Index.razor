@@ -4,7 +4,24 @@
 @attribute [Authorize]
 @using ItemInsight.Shared.Domain
 
-<h3 class="card-title">ItemInsight Product</h3>
+<head>
+    <style>
+        body{
+            background: linear-gradient(to bottom right, #FF6F61, #FDBB2D, #8B78E6);
+        } 
+        table {
+            color: black; /* Set text color for all table content to black */
+        }
+
+        th, td {
+            color: black; /* Set text color for table headers and cells to black */
+            border: 1px solid black; /* Optional: Add border for better visibility */
+        }
+    </style>
+</head>
+
+<h3 class="card-title"><b>ItemInsight Product</b></h3>
+
 <a href="/products/create" class="btn btn-secondary">
     <span class="oi oi-plus"></span>
     create new product
@@ -48,12 +65,12 @@ else
     <table class="table table-responsive">
         <thead>
             <tr>
-                <th>Producer</th>
-                <th>Product</th>
-                <th>Image</th>
-                <th>Product type</th>
-                <th>Cost</th>
-                <th>Actions</th>
+                <th><b>Producer</b></th>
+                <th><b>Product</b></th>
+                <th><b>Image</b></th>
+                <th><b>Product type</b></th>
+                <th><b>Cost</b></th>
+                <th><b>Actions</b></th>
             </tr>
         </thead>
         <tbody>
@@ -64,11 +81,11 @@ else
                 var NameProducer = Producers.FirstOrDefault(p => p.Id == product.ProducerId);
 
                 <tr>
-                    <td>@NameProducer.Name</td>
-                    <td><a href="@product.ProductLink">@product.Name</a></td>
-                    <td><img src="@product.ProductImage" alt="Uploaded Image" style="max-width:180px; max-height:180px;" /></td>
-                    <td>@NameListing.Name</td>
-                    <td>$@product.Cost</td>
+                    <td><b>@NameProducer.Name</b></td>
+                    <td><b><a href="@product.ProductLink">@product.Name</a></b></td>
+                    <td><b><img src="@product.ProductImage" alt="Uploaded Image" style="max-width:180px; max-height:180px;" /></b></td>
+                    <td><b>@NameListing.Name</b></td>
+                    <td><b>$@product.Cost</b></td>
                     <td>
                         <a href="/products/view/@product.Id" class="btn btn-primary">
                             <span class="oi oi-book"></span>
