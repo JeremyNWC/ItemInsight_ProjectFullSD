@@ -1,4 +1,4 @@
-﻿ @page "/products/"
+﻿@page "/products/"
 @inject HttpClient _client
 @inject IJSRuntime js
 @attribute [Authorize]
@@ -14,10 +14,14 @@
 
 @code {
     private List<Product>? Products;
+    private List<Listing> Listings;
+    private List<Producer> Producers;
 
     protected async override Task OnInitializedAsync()
     {
         Products = await _client.GetFromJsonAsync<List<Product>>($"{Endpoints.ProductsEndpoint}");
+        Listings = await _client.GetFromJsonAsync<List<Listing>>($"{Endpoints.ListingsEndpoint}");
+        Producers = await _client.GetFromJsonAsync<List<Producer>>($"{Endpoints.ProducersEndpoint}");
     }
 
     async Task Delete(int productId)
@@ -44,8 +48,10 @@ else
     <table class="table table-responsive">
         <thead>
             <tr>
+                <th>Producer</th>
                 <th>Product</th>
                 <th>Image</th>
+                <th>Product type</th>
                 <th>Cost</th>
                 <th>Actions</th>
             </tr>
@@ -53,9 +59,15 @@ else
         <tbody>
             @foreach (var product in Products)
             {
+                var NameListing = Listings.FirstOrDefault(l => l.Id == product.ListingId);
+
+                var NameProducer = Producers.FirstOrDefault(p => p.Id == product.ProducerId);
+
                 <tr>
+                    <td>@NameProducer.Name</td>
                     <td>@product.Name</td>
                     <td><img src="@product.ProductImage" alt="Uploaded Image" style="max-width:180px; max-height:180px;" /></td>
+                    <td>@NameListing.Name</td>
                     <td>$@product.Cost</td>
                     <td>
                         <a href="/products/view/@product.Id" class="btn btn-primary">
