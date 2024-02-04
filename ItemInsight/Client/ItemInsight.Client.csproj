@@ -13,6 +13,11 @@
     <None Include="Pages\Consumer\FormComponent.razor" />
     <None Include="Pages\Consumer\Index.razor" />
     <None Include="Pages\Consumer\View.razor" />
+    <None Include="Pages\Listing\Create.razor" />
+    <None Include="Pages\Listing\Edit.razor" />
+    <None Include="Pages\Listing\FormComponent.razor" />
+    <None Include="Pages\Listing\Index.razor" />
+    <None Include="Pages\Listing\View.razor" />
     <None Include="Pages\Producer\Create.razor" />
     <None Include="Pages\Producer\Edit.razor" />
     <None Include="Pages\Producer\FormComponent.razor" />
