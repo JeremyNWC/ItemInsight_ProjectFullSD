@@ -8,6 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Pages\write\Create.razor" />
+    <Content Remove="Pages\write\Edit.razor" />
+    <Content Remove="Pages\write\FormComponent.razor" />
+    <Content Remove="Pages\write\Index.razor" />
+    <Content Remove="Pages\write\View.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="Pages\Consumer\Create.razor" />
     <None Include="Pages\Consumer\Edit.razor" />
     <None Include="Pages\Consumer\FormComponent.razor" />
@@ -23,6 +31,11 @@
     <None Include="Pages\Product\FormComponent.razor" />
     <None Include="Pages\Product\Index.razor" />
     <None Include="Pages\Product\View.razor" />
+    <None Include="Pages\write\Create.razor" />
+    <None Include="Pages\write\Edit.razor" />
+    <None Include="Pages\write\FormComponent.razor" />
+    <None Include="Pages\write\Index.razor" />
+    <None Include="Pages\write\View.razor" />
     <None Include="Pages\Review\Create.razor" />
     <None Include="Pages\Review\Edit.razor" />
     <None Include="Pages\Review\FormComponent.razor" />

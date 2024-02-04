@@ -5,6 +5,7 @@
 @using ItemInsight.Shared.Domain;
 
 <h3 class="card-title">Consumers</h3>
+<input type="text" @bind-value="searchTerm" @bind-value:event="oninput" placeholder="Search by name" class="form-control mb-3" />
 
 <a href="/consumers/create" class="btn btn-secondary">
     <span class="oi oi-plus"></span>
@@ -15,6 +16,7 @@
 
 @code {
     private List<Consumer>? Consumers;
+    private string searchTerm;
 
     protected async override Task OnInitializedAsync()
 
@@ -76,7 +78,7 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (var consumer in Consumers)
+            @foreach (var consumer in Consumers.Where(c => string.IsNullOrEmpty(searchTerm) || c.Name.Contains(searchTerm, StringComparison.OrdinalIgnoreCase)))
             {
                 <tr>
                     <td>@consumer.Name</td>
