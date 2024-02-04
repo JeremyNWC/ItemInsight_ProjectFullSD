@@ -8,6 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Pages\404.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Pages\404.razor" />
     <None Include="Pages\Consumer\Create.razor" />
     <None Include="Pages\Consumer\Edit.razor" />
     <None Include="Pages\Consumer\FormComponent.razor" />
@@ -46,6 +51,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="7.0.11" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
     <PackageReference Include="System.Text.Json" Version="7.0.0" />
+    <PackageReference Include="Toolbelt.Blazor.HttpClientInterceptor" Version="10.2.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -54,6 +60,14 @@
 
   <ItemGroup>
     <ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\404.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Pages\404.razor" />
   </ItemGroup>
 
 </Project>

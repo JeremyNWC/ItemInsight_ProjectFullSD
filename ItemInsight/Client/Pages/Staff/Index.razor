@@ -1,9 +1,10 @@
 ﻿@page "/staffs/"
-
 @inject HttpClient _client
 @inject IJSRuntime js
 @attribute [Authorize]
 @using ItemInsight.Shared.Domain;
+@inject HttpInterceptorService _interceptor
+@implements IDisposable
 
 <head>
     <style>
@@ -82,7 +83,13 @@ else
     protected async override Task OnInitializedAsync()
 
     {
+        _interceptor.MonitorEvent();
         Staffs = await _client.GetFromJsonAsync<List<Staff>>($"{Endpoints.StaffsEndpoint}");
+    }
+
+    public void Dispose()
+    {
+        _interceptor.DisposeEvent();
     }
 
     async Task Delete(int staffId)

@@ -3,6 +3,8 @@
 @inject IJSRuntime js
 @attribute [Authorize]
 @using ItemInsight.Shared.Domain;
+@inject HttpInterceptorService _interceptor
+@implements IDisposable
 
 <head>
     <style>
@@ -28,13 +30,54 @@
 </a>
 <br/>
 <br/>
+@if (Listings == null)
+{
+    <div class="alert alert-info">Loading Product types...</div>
+}
+else
+{
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th><b>Product Type</b></th>
+                <th><b>Actions</b></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var listing in Listings)
+            {
+                <tr>
+                    <td><b>@listing.Name</b></td>
+
+                    <td>
+                        <a href="/listings/view/@listing.Id" class="btn btn-primary">
+                            <span class="oi oi-book"></span>
+                        </a>
+                        <a href="/listings/edit/@listing.Id" class="btn btn-warning">
+                            <span class="oi oi-pencil"></span>
+                        </a>
+                        <button class="btn btn-danger" @onclick="(() => Delete(listing.Id))">
+                            <span class="oi oi-delete"></span>
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
 
 @code {
     private List<Listing>? Listings;
 
     protected async override Task OnInitializedAsync()
     {
+        _interceptor.MonitorEvent();
         Listings = await _client.GetFromJsonAsync<List<Listing>>($"{Endpoints.ListingsEndpoint}");
+    }
+
+    public void Dispose()
+    {
+        _interceptor.DisposeEvent();
     }
 
     async Task Delete(int listingId)
@@ -71,38 +114,3 @@
     }
 }
 
-@if (Listings == null)
-{
-    <div class="alert alert-info">Loading Product types...</div>
-}
-else
-{
-    <table class="table table-responsive">
-        <thead>
-            <tr>
-                <th><b>Product Type</b></th>
-                <th><b>Actions</b></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var listing in Listings)
-            {
-                <tr>
-                    <td><b>@listing.Name</b></td>
-
-                    <td>
-                        <a href="/listings/view/@listing.Id" class="btn btn-primary">
-                            <span class="oi oi-book"></span>
-                        </a>
-                        <a href="/listings/edit/@listing.Id" class="btn btn-warning">
-                            <span class="oi oi-pencil"></span>
-                        </a>
-                        <button class="btn btn-danger" @onclick="(() => Delete(listing.Id))">
-                            <span class="oi oi-delete"></span>
-                        </button>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}

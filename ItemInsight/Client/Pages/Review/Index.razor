@@ -3,6 +3,8 @@
 @inject IJSRuntime js
 @attribute [Authorize]
 @using ItemInsight.Shared.Domain
+@inject HttpInterceptorService _interceptor
+@implements IDisposable
 
 <head>
     <style>
@@ -35,9 +37,15 @@
 
     protected async override Task OnInitializedAsync()
     {
+        _interceptor.MonitorEvent();
         Reviews = await _client.GetFromJsonAsync<List<Review>>($"{Endpoints.ReviewsEndpoint}");
         Products = await _client.GetFromJsonAsync<List<Product>>($"{Endpoints.ProductsEndpoint}");
 
+    }
+
+    public void Dispose()
+    {
+        _interceptor.DisposeEvent();
     }
 
     async Task Delete(int reviewId)
