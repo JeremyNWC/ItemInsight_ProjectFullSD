@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ItemInsight.Server.Migrations
 {
     /// <inheritdoc />
-    public partial class testing : Migration
+    public partial class link : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -303,6 +303,7 @@ namespace ItemInsight.Server.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Cost = table.Column<double>(type: "float", nullable: true),
                     ProductImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ProductLink = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ProducerId = table.Column<int>(type: "int", nullable: false),
                     ListingId = table.Column<int>(type: "int", nullable: false),
                     DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -334,7 +335,7 @@ namespace ItemInsight.Server.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ConsumerReview = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Rating = table.Column<double>(type: "float", nullable: true),
+                    Rating = table.Column<double>(type: "float", nullable: false),
                     ProductId = table.Column<int>(type: "int", nullable: false),
                     DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateUpdated = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -367,9 +368,9 @@ namespace ItemInsight.Server.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "2807eff2-b8a5-482d-bdb3-a2291dbc60a8", 0, "49236a65-6bb5-4bf8-be8f-ab87dd6efa45", "producer@gmail.com", false, "Producer", "User", false, null, "PRODUCER@GMAIL.COM", "PRODUCER@GMAIL.COM", "AQAAAAIAAYagAAAAEIVUbt1gkbYZzJMGBAdW/38SDQj7yL+QiUqzJATBwA/BMQucFU01Ue0+Km2ssYtyoA==", null, false, "296304c8-4575-4bd0-9e50-0865bda34ba0", false, "producer@gmail.com" },
-                    { "3781efa7-66dc-47f0-860f-e506d04102e4", 0, "ede0910f-dd62-452c-8eb8-d187d13a1b78", "admin@gmail.com", false, "Admin", "User", false, null, "ADMIN@GMAIL.COM", "ADMIN@LOCALHOST.COM", "AQAAAAIAAYagAAAAELU7FTmc3Flq226PxJvVChX7qA4HQGEFCHB1KwPLUeCL3z1vGGA2dYtS+z+JPn1mFA==", null, false, "36e87f42-0c84-4589-8d81-dcbc940de913", false, "admin@localhost.com" },
-                    { "f5eb6ea1-d9cc-40dd-be1a-829c3edf2069", 0, "f08b9096-8022-45d4-8032-8859ac6cd7de", "consumer@gmail.com", false, "Consumer", "User", false, null, "CONSUMER@GMAIL.COM", "CONSUMER@GMAIL.COM", "AQAAAAIAAYagAAAAEGbUa0gIDXzqNtkNNt5IhM1/QtQj1W0rp9nHOEaLj+5Z8FqFEpP+6lr4DAgKIGuR7Q==", null, false, "65f25fe5-fe63-4784-9967-f0fbb20765c0", false, "consumer@gmail.com" }
+                    { "2807eff2-b8a5-482d-bdb3-a2291dbc60a8", 0, "9612b09e-b797-4904-80a2-993c3cbbdedf", "producer@gmail.com", false, "Producer", "User", false, null, "PRODUCER@GMAIL.COM", "PRODUCER@GMAIL.COM", "AQAAAAIAAYagAAAAEHQIlTPlJHMHtaSdd5Pi2wrvU1tX0DsbBcKhcWGd//u1um26BKI6qmUCreORvida3A==", null, false, "b53e4d9c-afd3-4eb1-9a6d-64b6065db7ad", false, "producer@gmail.com" },
+                    { "3781efa7-66dc-47f0-860f-e506d04102e4", 0, "44324690-055d-4a89-ab3c-129b71c302c7", "admin@gmail.com", false, "Admin", "User", false, null, "ADMIN@GMAIL.COM", "ADMIN@LOCALHOST.COM", "AQAAAAIAAYagAAAAEAGjWDkFbAbdRm+iTRDahCm+8ocZGM0zB2/7vsFvLBFn1cIX2NsuLRNU6DrWh3CHtA==", null, false, "25dd3e5b-3a3b-4ce2-be4a-446a12b51b84", false, "admin@localhost.com" },
+                    { "f5eb6ea1-d9cc-40dd-be1a-829c3edf2069", 0, "fe017f64-b67a-47b7-8c96-374d4fb32661", "consumer@gmail.com", false, "Consumer", "User", false, null, "CONSUMER@GMAIL.COM", "CONSUMER@GMAIL.COM", "AQAAAAIAAYagAAAAENZfsyeOTt7Y1o4nvr0A2BsJYRTLNAmztlT2WYA5Ce8eGPtz4H2NnaPvJf2u+DKjMg==", null, false, "0f1e7288-964f-4e32-8399-39fd8f127015", false, "consumer@gmail.com" }
                 });
 
             migrationBuilder.InsertData(
@@ -418,12 +419,12 @@ namespace ItemInsight.Server.Migrations
 
             migrationBuilder.InsertData(
                 table: "Products",
-                columns: new[] { "Id", "Cost", "CreatedBy", "DateCreated", "DateUpdated", "ListingId", "Name", "ProducerId", "ProductImage", "UpdatedBy" },
+                columns: new[] { "Id", "Cost", "CreatedBy", "DateCreated", "DateUpdated", "ListingId", "Name", "ProducerId", "ProductImage", "ProductLink", "UpdatedBy" },
                 values: new object[,]
                 {
-                    { 1, 13.4, null, new DateTime(2024, 2, 4, 13, 17, 5, 290, DateTimeKind.Local).AddTicks(5602), new DateTime(2024, 2, 4, 13, 17, 5, 290, DateTimeKind.Local).AddTicks(5604), 1, "Dotted Dress", 1, "images/aboutus.jpg", null },
-                    { 2, 99.900000000000006, null, new DateTime(2024, 2, 4, 13, 17, 5, 290, DateTimeKind.Local).AddTicks(5608), new DateTime(2024, 2, 4, 13, 17, 5, 290, DateTimeKind.Local).AddTicks(5609), 2, "Sofa", 2, "images/aboutus1.jpg", null },
-                    { 3, 99.900000000000006, null, new DateTime(2024, 2, 4, 13, 17, 5, 290, DateTimeKind.Local).AddTicks(5612), new DateTime(2024, 2, 4, 13, 17, 5, 290, DateTimeKind.Local).AddTicks(5613), 3, "Sofaz", 3, "images/homepage.jpg", null }
+                    { 1, 13.4, null, new DateTime(2024, 2, 4, 18, 14, 51, 929, DateTimeKind.Local).AddTicks(4940), new DateTime(2024, 2, 4, 18, 14, 51, 929, DateTimeKind.Local).AddTicks(4950), 1, "Dotted Dress", 1, "images/aboutus.jpg", "https://github.com/JeremyNWC/ItemInsight_ProjectFullSD/commits/master/", null },
+                    { 2, 99.900000000000006, null, new DateTime(2024, 2, 4, 18, 14, 51, 929, DateTimeKind.Local).AddTicks(4955), new DateTime(2024, 2, 4, 18, 14, 51, 929, DateTimeKind.Local).AddTicks(4957), 2, "Sofa", 2, "images/aboutus1.jpg", "https://github.com/JeremyNWC/ItemInsight_ProjectFullSD/commits/master/", null },
+                    { 3, 99.900000000000006, null, new DateTime(2024, 2, 4, 18, 14, 51, 929, DateTimeKind.Local).AddTicks(4960), new DateTime(2024, 2, 4, 18, 14, 51, 929, DateTimeKind.Local).AddTicks(4961), 3, "Sofaz", 3, "images/homepage.jpg", "https://github.com/JeremyNWC/ItemInsight_ProjectFullSD/commits/master/", null }
                 });
 
             migrationBuilder.InsertData(
@@ -431,9 +432,9 @@ namespace ItemInsight.Server.Migrations
                 columns: new[] { "Id", "ConsumerReview", "CreatedBy", "DateCreated", "DateUpdated", "ProductId", "Rating", "UpdatedBy" },
                 values: new object[,]
                 {
-                    { 1, "Wonderful product", null, new DateTime(2024, 2, 4, 13, 17, 5, 290, DateTimeKind.Local).AddTicks(4226), new DateTime(2024, 2, 4, 13, 17, 5, 290, DateTimeKind.Local).AddTicks(4245), 1, 5.0, null },
-                    { 2, "Mediocre product", null, new DateTime(2024, 2, 4, 13, 17, 5, 290, DateTimeKind.Local).AddTicks(4249), new DateTime(2024, 2, 4, 13, 17, 5, 290, DateTimeKind.Local).AddTicks(4250), 2, 3.5, null },
-                    { 3, "Mediocre product", null, new DateTime(2024, 2, 4, 13, 17, 5, 290, DateTimeKind.Local).AddTicks(4253), new DateTime(2024, 2, 4, 13, 17, 5, 290, DateTimeKind.Local).AddTicks(4254), 3, 3.5, null }
+                    { 1, "Wonderful product", null, new DateTime(2024, 2, 4, 18, 14, 51, 929, DateTimeKind.Local).AddTicks(2548), new DateTime(2024, 2, 4, 18, 14, 51, 929, DateTimeKind.Local).AddTicks(2567), 1, 5.0, null },
+                    { 2, "Mediocre product", null, new DateTime(2024, 2, 4, 18, 14, 51, 929, DateTimeKind.Local).AddTicks(2571), new DateTime(2024, 2, 4, 18, 14, 51, 929, DateTimeKind.Local).AddTicks(2572), 2, 3.5, null },
+                    { 3, "Mediocre product", null, new DateTime(2024, 2, 4, 18, 14, 51, 929, DateTimeKind.Local).AddTicks(2575), new DateTime(2024, 2, 4, 18, 14, 51, 929, DateTimeKind.Local).AddTicks(2575), 3, 3.5, null }
                 });
 
             migrationBuilder.CreateIndex(

@@ -4,7 +4,23 @@
 @attribute [Authorize]
 @using ItemInsight.Shared.Domain;
 
-<h3 class="card-title">Product types</h3>
+<head>
+    <style>
+        body {
+            background: linear-gradient(to bottom, #87CEEB, #5F9EA0);
+        }
+        table {
+            color: black; /* Set text color for all table content to black */
+        }
+
+        th, td {
+            color: black; /* Set text color for table headers and cells to black */
+            border: 1px solid black; /* Optional: Add border for better visibility */
+        }
+    </style>
+</head>
+
+<h3 class="card-title"><b>Product types</b></h3>
 
 <a href="/listings/create" class="btn btn-secondary">
     <span class="oi oi-plus"></span>
@@ -64,15 +80,15 @@ else
     <table class="table table-responsive">
         <thead>
             <tr>
-                <th>Product Type</th>
-                <th>Actions</th>
+                <th><b>Product Type</b></th>
+                <th><b>Actions</b></th>
             </tr>
         </thead>
         <tbody>
             @foreach (var listing in Listings)
             {
                 <tr>
-                    <td>@listing.Name</td>
+                    <td><b>@listing.Name</b></td>
 
                     <td>
                         <a href="/listings/view/@listing.Id" class="btn btn-primary">
