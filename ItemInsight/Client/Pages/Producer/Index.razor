@@ -4,7 +4,26 @@
 @attribute [Authorize]
 @using ItemInsight.Shared.Domain;
 
-<h3 class="card-title">ItemInsight Producer</h3>
+<head>
+    <style>
+        body{
+            background: linear-gradient(to bottom right, #070720, #171738, #070720);
+            color: #ffffff; /* Optionally, set text color to white for better readability */
+        }
+
+        table {
+            color: white; /* Set text color for all table content */
+        }
+
+        th, td {
+            color: white; /* Set text color for table headers and cells */
+            border: 1px solid white; /* Optional: Add border for better visibility */
+        }
+    </style>
+</head>
+
+<h3 class="card-title"><b>ItemInsight Producer</b></h3>
+
 <a href="/producers/create" class="btn btn-secondary">
     <span class="oi oi-plus"></span>
     create new producer
@@ -43,21 +62,21 @@ else
     <table class="table table-responsive">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>ContactNo</th>
-                <th>Email</th>
-                <th>Password</th>
-                <th>Actions</th>
+                <th><b>Name</b></th>
+                <th><b>ContactNo</b></th>
+                <th><b>Email</b></th>
+                <th><b>Password</b></th>
+                <th><b>Actions</b></th>
             </tr>
         </thead>
         <tbody>
             @foreach (var producer in Producers)
             {
                 <tr>
-                    <td>@producer.Name</td>
-                    <td>@producer.ContactNo</td>
-                    <td>@producer.Email</td>
-                    <td>@producer.Password</td>
+                    <td><b>@producer.Name</b></td>
+                    <td><b>@producer.ContactNo</b></td>
+                    <td><b>@producer.Email</b></td>
+                    <td><b>@producer.Password</b></td>
                     <td>
                         <a href="/producers/view/@producer.Id" class="btn btn-primary">
                             <span class="oi oi-book"></span>
