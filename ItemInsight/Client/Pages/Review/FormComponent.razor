@@ -36,16 +36,6 @@
 
     <fieldset disabled="@Disabled">
     <div class="form-group">
-        <label>Category:</label>
-        <div>
-            <InputText @bind-Value="@review.Category" class="form-control" />
-            <ValidationMessage For="@(() => review.Category)" />
-        </div>
-    </div>
-    </fieldset>
-
-    <fieldset disabled="@Disabled">
-    <div class="form-group">
         <label>Rating</label>
         <div>
             <InputNumber @bind-Value="@review.Rating" class="form-control" />

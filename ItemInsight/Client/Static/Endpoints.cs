@@ -11,6 +11,7 @@ namespace ItemInsight.Client.Static
 
         public static readonly string ConsumersEndpoint = $"{Prefix}/consumers";
         public static readonly string ProducersEndpoint = $"{Prefix}/producers";
+        public static readonly string ListingsEndpoint = $"{Prefix}/listings";
         public static readonly string ProductsEndpoint = $"{Prefix}/products";
         public static readonly string ReviewsEndpoint = $"{Prefix}/reviews";
         public static readonly string StaffsEndpoint = $"{Prefix}/staffs";

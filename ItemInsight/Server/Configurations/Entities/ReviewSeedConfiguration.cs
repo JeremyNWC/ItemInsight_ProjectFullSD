@@ -19,7 +19,6 @@ namespace ItemInsight.Server.Configurations.Entities
                 {
                     Id = 1,
                     ConsumerReview = "Wonderful product",
-                    Category = "Fashion",
                     Rating = 5,
                     ProductId = 1,
                     DateCreated = DateTime.Now,
@@ -29,7 +28,6 @@ namespace ItemInsight.Server.Configurations.Entities
                 {
                     Id = 2,
                     ConsumerReview = "Mediocre product",
-                    Category = "Furniture",
                     Rating = 3.5,
                     ProductId = 2,
                     DateCreated = DateTime.Now,
@@ -39,7 +37,6 @@ namespace ItemInsight.Server.Configurations.Entities
                       {
                           Id = 3,
                           ConsumerReview = "Mediocre product",
-                          Category = "Furniture",
                           Rating = 3.5,
                           ProductId = 3,
                           DateCreated = DateTime.Now,

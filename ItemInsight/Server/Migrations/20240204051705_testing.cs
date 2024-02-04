@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ItemInsight.Server.Migrations
 {
     /// <inheritdoc />
-    public partial class updatedDb : Migration
+    public partial class testing : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -109,6 +109,23 @@ namespace ItemInsight.Server.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Keys", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Listings",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DateUpdated = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Listings", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -284,10 +301,10 @@ namespace ItemInsight.Server.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Category = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Cost = table.Column<double>(type: "float", nullable: true),
                     ProductImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ProducerId = table.Column<int>(type: "int", nullable: false),
+                    ListingId = table.Column<int>(type: "int", nullable: false),
                     DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateUpdated = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -296,6 +313,12 @@ namespace ItemInsight.Server.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Products", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Products_Listings_ListingId",
+                        column: x => x.ListingId,
+                        principalTable: "Listings",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Products_Producers_ProducerId",
                         column: x => x.ProducerId,
@@ -311,7 +334,6 @@ namespace ItemInsight.Server.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ConsumerReview = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Category = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Rating = table.Column<double>(type: "float", nullable: true),
                     ProductId = table.Column<int>(type: "int", nullable: false),
                     DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -345,9 +367,9 @@ namespace ItemInsight.Server.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "2807eff2-b8a5-482d-bdb3-a2291dbc60a8", 0, "6c4a0282-9a39-4c88-ada8-5cf792edb01c", "producer@gmail.com", false, "Producer", "User", false, null, "PRODUCER@GMAIL.COM", "PRODUCER@GMAIL.COM", "AQAAAAIAAYagAAAAEF+LUxdNhcRivmEGByfQsCZHrRSXIHsWLpdRVP/1xAzAfkcgudHzbgGEq8e1t3fumw==", null, false, "19c3bbd1-afdf-4f7f-9ce8-f2c6b0cb1263", false, "producer@gmail.com" },
-                    { "3781efa7-66dc-47f0-860f-e506d04102e4", 0, "c531540e-82d8-4614-a9c8-2d8205c6f381", "admin@gmail.com", false, "Admin", "User", false, null, "ADMIN@GMAIL.COM", "ADMIN@LOCALHOST.COM", "AQAAAAIAAYagAAAAEFyvJTPh+VYo9Al8qaTWqJpP4AGlLBVr8QR1dEo+N7PUOA9QJkhBOcPzpvVi1IZiUQ==", null, false, "e7aae40e-2d0f-4325-85ed-9be0894756be", false, "admin@localhost.com" },
-                    { "f5eb6ea1-d9cc-40dd-be1a-829c3edf2069", 0, "8b343d9d-ea16-48c4-a7d3-7045b29fe123", "consumer@gmail.com", false, "Consumer", "User", false, null, "CONSUMER@GMAIL.COM", "CONSUMER@GMAIL.COM", "AQAAAAIAAYagAAAAEDR39cm1FWMU0kSyiXXEH8kgEbADzvaOB74wTNnqQL9j5XX4d3mrqTXpjX+q+HYRSw==", null, false, "cd40350d-b7f8-432e-9ca4-75fde5681990", false, "consumer@gmail.com" }
+                    { "2807eff2-b8a5-482d-bdb3-a2291dbc60a8", 0, "49236a65-6bb5-4bf8-be8f-ab87dd6efa45", "producer@gmail.com", false, "Producer", "User", false, null, "PRODUCER@GMAIL.COM", "PRODUCER@GMAIL.COM", "AQAAAAIAAYagAAAAEIVUbt1gkbYZzJMGBAdW/38SDQj7yL+QiUqzJATBwA/BMQucFU01Ue0+Km2ssYtyoA==", null, false, "296304c8-4575-4bd0-9e50-0865bda34ba0", false, "producer@gmail.com" },
+                    { "3781efa7-66dc-47f0-860f-e506d04102e4", 0, "ede0910f-dd62-452c-8eb8-d187d13a1b78", "admin@gmail.com", false, "Admin", "User", false, null, "ADMIN@GMAIL.COM", "ADMIN@LOCALHOST.COM", "AQAAAAIAAYagAAAAELU7FTmc3Flq226PxJvVChX7qA4HQGEFCHB1KwPLUeCL3z1vGGA2dYtS+z+JPn1mFA==", null, false, "36e87f42-0c84-4589-8d81-dcbc940de913", false, "admin@localhost.com" },
+                    { "f5eb6ea1-d9cc-40dd-be1a-829c3edf2069", 0, "f08b9096-8022-45d4-8032-8859ac6cd7de", "consumer@gmail.com", false, "Consumer", "User", false, null, "CONSUMER@GMAIL.COM", "CONSUMER@GMAIL.COM", "AQAAAAIAAYagAAAAEGbUa0gIDXzqNtkNNt5IhM1/QtQj1W0rp9nHOEaLj+5Z8FqFEpP+6lr4DAgKIGuR7Q==", null, false, "65f25fe5-fe63-4784-9967-f0fbb20765c0", false, "consumer@gmail.com" }
                 });
 
             migrationBuilder.InsertData(
@@ -357,6 +379,16 @@ namespace ItemInsight.Server.Migrations
                 {
                     { 1, "87538922", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "adenGaming@gmail.com", "Aden", "Aden", null },
                     { 2, "92830481", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "clare@gmail.com", "Clare", "Clare", null }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Listings",
+                columns: new[] { "Id", "CreatedBy", "DateCreated", "DateUpdated", "Name", "UpdatedBy" },
+                values: new object[,]
+                {
+                    { 1, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Fashion", null },
+                    { 2, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Furniture", null },
+                    { 3, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Lifestyle", null }
                 });
 
             migrationBuilder.InsertData(
@@ -386,22 +418,22 @@ namespace ItemInsight.Server.Migrations
 
             migrationBuilder.InsertData(
                 table: "Products",
-                columns: new[] { "Id", "Category", "Cost", "CreatedBy", "DateCreated", "DateUpdated", "Name", "ProducerId", "ProductImage", "UpdatedBy" },
+                columns: new[] { "Id", "Cost", "CreatedBy", "DateCreated", "DateUpdated", "ListingId", "Name", "ProducerId", "ProductImage", "UpdatedBy" },
                 values: new object[,]
                 {
-                    { 1, "Fashion", 13.4, null, new DateTime(2024, 2, 3, 15, 46, 50, 595, DateTimeKind.Local).AddTicks(2546), new DateTime(2024, 2, 3, 15, 46, 50, 595, DateTimeKind.Local).AddTicks(2551), "Dotted Dress", 1, "images/aboutus.jpg", null },
-                    { 2, "Furniture", 99.900000000000006, null, new DateTime(2024, 2, 3, 15, 46, 50, 595, DateTimeKind.Local).AddTicks(2555), new DateTime(2024, 2, 3, 15, 46, 50, 595, DateTimeKind.Local).AddTicks(2556), "Sofa", 2, "images/aboutus1.jpg", null },
-                    { 3, "Furniture", 99.900000000000006, null, new DateTime(2024, 2, 3, 15, 46, 50, 595, DateTimeKind.Local).AddTicks(2558), new DateTime(2024, 2, 3, 15, 46, 50, 595, DateTimeKind.Local).AddTicks(2559), "Sofaz", 3, "images/homepage.jpg", null }
+                    { 1, 13.4, null, new DateTime(2024, 2, 4, 13, 17, 5, 290, DateTimeKind.Local).AddTicks(5602), new DateTime(2024, 2, 4, 13, 17, 5, 290, DateTimeKind.Local).AddTicks(5604), 1, "Dotted Dress", 1, "images/aboutus.jpg", null },
+                    { 2, 99.900000000000006, null, new DateTime(2024, 2, 4, 13, 17, 5, 290, DateTimeKind.Local).AddTicks(5608), new DateTime(2024, 2, 4, 13, 17, 5, 290, DateTimeKind.Local).AddTicks(5609), 2, "Sofa", 2, "images/aboutus1.jpg", null },
+                    { 3, 99.900000000000006, null, new DateTime(2024, 2, 4, 13, 17, 5, 290, DateTimeKind.Local).AddTicks(5612), new DateTime(2024, 2, 4, 13, 17, 5, 290, DateTimeKind.Local).AddTicks(5613), 3, "Sofaz", 3, "images/homepage.jpg", null }
                 });
 
             migrationBuilder.InsertData(
                 table: "Reviews",
-                columns: new[] { "Id", "Category", "ConsumerReview", "CreatedBy", "DateCreated", "DateUpdated", "ProductId", "Rating", "UpdatedBy" },
+                columns: new[] { "Id", "ConsumerReview", "CreatedBy", "DateCreated", "DateUpdated", "ProductId", "Rating", "UpdatedBy" },
                 values: new object[,]
                 {
-                    { 1, "Fashion", "Wonderful product", null, new DateTime(2024, 2, 3, 15, 46, 50, 595, DateTimeKind.Local).AddTicks(477), new DateTime(2024, 2, 3, 15, 46, 50, 595, DateTimeKind.Local).AddTicks(504), 1, 5.0, null },
-                    { 2, "Furniture", "Mediocre product", null, new DateTime(2024, 2, 3, 15, 46, 50, 595, DateTimeKind.Local).AddTicks(510), new DateTime(2024, 2, 3, 15, 46, 50, 595, DateTimeKind.Local).AddTicks(511), 2, 3.5, null },
-                    { 3, "Furniture", "Mediocre product", null, new DateTime(2024, 2, 3, 15, 46, 50, 595, DateTimeKind.Local).AddTicks(514), new DateTime(2024, 2, 3, 15, 46, 50, 595, DateTimeKind.Local).AddTicks(515), 3, 3.5, null }
+                    { 1, "Wonderful product", null, new DateTime(2024, 2, 4, 13, 17, 5, 290, DateTimeKind.Local).AddTicks(4226), new DateTime(2024, 2, 4, 13, 17, 5, 290, DateTimeKind.Local).AddTicks(4245), 1, 5.0, null },
+                    { 2, "Mediocre product", null, new DateTime(2024, 2, 4, 13, 17, 5, 290, DateTimeKind.Local).AddTicks(4249), new DateTime(2024, 2, 4, 13, 17, 5, 290, DateTimeKind.Local).AddTicks(4250), 2, 3.5, null },
+                    { 3, "Mediocre product", null, new DateTime(2024, 2, 4, 13, 17, 5, 290, DateTimeKind.Local).AddTicks(4253), new DateTime(2024, 2, 4, 13, 17, 5, 290, DateTimeKind.Local).AddTicks(4254), 3, 3.5, null }
                 });
 
             migrationBuilder.CreateIndex(
@@ -480,6 +512,11 @@ namespace ItemInsight.Server.Migrations
                 columns: new[] { "SubjectId", "SessionId", "Type" });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Products_ListingId",
+                table: "Products",
+                column: "ListingId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Products_ProducerId",
                 table: "Products",
                 column: "ProducerId");
@@ -534,6 +571,9 @@ namespace ItemInsight.Server.Migrations
 
             migrationBuilder.DropTable(
                 name: "Products");
+
+            migrationBuilder.DropTable(
+                name: "Listings");
 
             migrationBuilder.DropTable(
                 name: "Producers");

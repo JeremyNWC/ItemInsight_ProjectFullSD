@@ -13,10 +13,12 @@
     Product product = new Product();
 
     private IList<Producer>? Producers;
+    private IList<Listing>? Listings;
 
     protected async override Task OnInitializedAsync()
     {
         Producers = await _client.GetFromJsonAsync<List<Producer>>($"{Endpoints.ProducersEndpoint}");
+        Listings = await _client.GetFromJsonAsync<List<Listing>>($"{Endpoints.ListingsEndpoint}");
     }
 
     private async Task CreateProduct()

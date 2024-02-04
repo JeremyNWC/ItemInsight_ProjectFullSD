@@ -17,6 +17,7 @@ namespace ItemInsight.Server.Data
         }
         public DbSet<Consumer> Consumers { get; set; }
         public DbSet<Producer> Producers { get; set; }
+        public DbSet<Listing> Listings { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Review> Reviews { get; set; }
         public DbSet<Staff> Staffs { get; set; }
@@ -32,6 +33,7 @@ namespace ItemInsight.Server.Data
             builder.ApplyConfiguration(new StaffSeedConfiguration());
             builder.ApplyConfiguration(new ConsumerSeedConfiguration());
             builder.ApplyConfiguration(new ProductSeedConfiguration());
+            builder.ApplyConfiguration(new ListingSeedConfiguration());
 
         }
 

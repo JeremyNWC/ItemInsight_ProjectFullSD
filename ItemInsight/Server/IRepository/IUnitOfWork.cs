@@ -15,5 +15,6 @@ namespace ItemInsight.Server.IRepository
         IGenericRepository<Product> Products { get; }
         IGenericRepository<Review> Reviews { get; }
         IGenericRepository<Staff> Staffs { get; }
+        IGenericRepository<Listing> Listings { get; }
     }
 }

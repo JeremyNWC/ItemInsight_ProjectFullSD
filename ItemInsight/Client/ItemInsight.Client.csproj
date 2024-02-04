@@ -8,6 +8,34 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="Pages\Consumer\Create.razor" />
+    <None Include="Pages\Consumer\Edit.razor" />
+    <None Include="Pages\Consumer\FormComponent.razor" />
+    <None Include="Pages\Consumer\Index.razor" />
+    <None Include="Pages\Consumer\View.razor" />
+    <None Include="Pages\Producer\Create.razor" />
+    <None Include="Pages\Producer\Edit.razor" />
+    <None Include="Pages\Producer\FormComponent.razor" />
+    <None Include="Pages\Producer\Index.razor" />
+    <None Include="Pages\Producer\View.razor" />
+    <None Include="Pages\Product\Create.razor" />
+    <None Include="Pages\Product\Edit.razor" />
+    <None Include="Pages\Product\FormComponent.razor" />
+    <None Include="Pages\Product\Index.razor" />
+    <None Include="Pages\Product\View.razor" />
+    <None Include="Pages\Review\Create.razor" />
+    <None Include="Pages\Review\Edit.razor" />
+    <None Include="Pages\Review\FormComponent.razor" />
+    <None Include="Pages\Review\Index.razor" />
+    <None Include="Pages\Review\View.razor" />
+    <None Include="Pages\Staff\Create.razor" />
+    <None Include="Pages\Staff\Edit.razor" />
+    <None Include="Pages\Staff\FormComponent.razor" />
+    <None Include="Pages\Staff\Index.razor" />
+    <None Include="Pages\Staff\View.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.11" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.11" PrivateAssets="all" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="7.0.11" />

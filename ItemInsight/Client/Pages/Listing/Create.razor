@@ -1,0 +1,20 @@
+﻿@page "/listings/create/"
+@inject HttpClient _client
+@inject NavigationManager _navManager
+@using ItemInsight.Shared.Domain;
+
+<h3 class="card-title">Create New Product type</h3>
+<br/>
+<br/>
+
+<FormComponent ButtonText="Create product type" listing="listing" OnValidSubmit="@CreateListing"/>
+
+@code {
+    Listing listing = new Listing();
+
+    private async Task CreateListing()
+    {
+        await _client.PostAsJsonAsync(Endpoints.ListingsEndpoint, listing);
+        _navManager.NavigateTo("/listings/");
+    }
+}

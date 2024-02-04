@@ -19,7 +19,7 @@ namespace ItemInsight.Server.Configurations.Entities
                 {
                     Id = 1,
                     Name = "Dotted Dress",
-                    Category = "Fashion",
+                    ListingId = 1,
                     Cost = 13.4,
                     ProductImage = "images/aboutus.jpg",
                     ProducerId = 1,
@@ -30,7 +30,7 @@ namespace ItemInsight.Server.Configurations.Entities
                 {
                     Id = 2,
                     Name = "Sofa",
-                    Category = "Furniture",
+                    ListingId = 2,
                     Cost = 99.9,
                     ProductImage = "images/aboutus1.jpg",
                     ProducerId = 2,
@@ -41,7 +41,7 @@ namespace ItemInsight.Server.Configurations.Entities
                     {
                         Id = 3,
                         Name = "Sofaz",
-                        Category = "Furniture",
+                        ListingId = 3,
                         Cost = 99.9,
                         ProductImage = "images/homepage.jpg",
                         ProducerId = 3,

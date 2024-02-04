@@ -21,6 +21,7 @@ namespace ItemInsight.Server.Repository
         private IGenericRepository<Product> _products;
         private IGenericRepository<Review> _reviews;
         private IGenericRepository<Staff> _staffs;
+        private IGenericRepository<Listing> _listings;
 
         private UserManager<ApplicationUser> _userManager;
 
@@ -40,7 +41,8 @@ namespace ItemInsight.Server.Repository
             => _reviews ??= new GenericRepository<Review>(_context);
         public IGenericRepository<Staff> Staffs
             => _staffs ??= new GenericRepository<Staff>(_context);
-       
+        public IGenericRepository<Listing> Listings
+            => _listings ??= new GenericRepository<Listing>(_context);
         public void Dispose()
         {
             _context.Dispose();
