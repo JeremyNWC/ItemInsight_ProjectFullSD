@@ -14,6 +14,8 @@ namespace ItemInsight.Shared.Domain
         public string? Name { get; set; }
 
         [Required]
+        [Phone(ErrorMessage = "Invalid Phone Number")]
+        [StringLength(8, ErrorMessage = "Contact number must be 8 digits")]
         public string? ContactNo { get; set; }
 
         [Required]
