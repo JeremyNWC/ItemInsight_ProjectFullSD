@@ -24,6 +24,9 @@
 </head>
 
 <h3 class="card-title"><b>ItemInsight Review</b></h3>
+
+<input type="text" @bind-value="searchTerm" @bind-value:event="oninput" placeholder="Search by product name" class="form-control mb-3" />
+
 <a href="/reviews/create" class="btn btn-secondary">
     <span class="oi oi-plus"></span>
     create new review
@@ -34,6 +37,7 @@
 @code {
     private List<Review>? Reviews;
     private List<Product>? Products;
+    private string searchTerm;
 
     protected async override Task OnInitializedAsync()
     {
@@ -72,17 +76,19 @@ else
         <thead>
             <tr>
                 <th><b>Product</b></th>
+                <th><b>Image</b></th>
                 <th><b>Review</b></th>
                 <th><b>Rating</b></th>
                 <th><b>Actions</b></th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var review in Reviews)
+            @foreach (var review in Reviews.Where(r => string.IsNullOrEmpty(searchTerm) || Products.Any(p => p.Id == r.ProductId && p.Name.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))))
             {
                 var ImageProduct = Products.FirstOrDefault(p => p.Id == review.ProductId);
 
                 <tr>
+                    <td><b>@ImageProduct.Name</b></td>
                     <td><img src="@ImageProduct.ProductImage"alt="Uploaded Image" style="max-width:180px; max-height:180px;" /></td>
                     <td><b>@review.ConsumerReview</b></td>
                     <td><b>@review.Rating</b></td>

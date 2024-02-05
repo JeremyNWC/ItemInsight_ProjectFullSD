@@ -25,6 +25,7 @@
 </head>
 
 <h3 class="card-title"><b>ItemInsight Producer</b></h3>
+<input type="text" @bind-value="searchTerm" @bind-value:event="oninput" placeholder="Search by producer's name" class="form-control mb-3" />
 
 <a href="/producers/create" class="btn btn-secondary">
     <span class="oi oi-plus"></span>
@@ -35,6 +36,7 @@
 
 @code {
     private List<Producer>? Producers;
+    private string searchTerm;
 
     protected async override Task OnInitializedAsync()
     {
@@ -78,7 +80,7 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (var producer in Producers)
+            @foreach (var producer in Producers.Where(p => string.IsNullOrEmpty(searchTerm) || p.Name.Contains(searchTerm, StringComparison.OrdinalIgnoreCase)))
             {
                 <tr>
                     <td><b>@producer.Name</b></td>
