@@ -19,8 +19,8 @@ namespace ItemInsight.Server.Configurations.Entities
             new ApplicationUser
                 {
                     Id = "3781efa7-66dc-47f0-860f-e506d04102e4",
-                    Email = "admin@gmail.com",
-                    NormalizedEmail = "ADMIN@GMAIL.COM",
+                    Email = "admin@localhost.com",
+                    NormalizedEmail = "ADMIN@LOCALHOST.COM",
                     FirstName = "Admin",
                     LastName = "User",
                     UserName = "admin@localhost.com",
