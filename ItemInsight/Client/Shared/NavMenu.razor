@@ -1,4 +1,6 @@
-﻿@inject NavigationManager Navigation
+﻿@using ItemInsight.Shared.Domain
+@inject NavigationManager Navigation
+@inject HttpClient client
 
 <div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
@@ -64,47 +66,76 @@
             </NavLink>
         </div>
 
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="consumers">
-                <span class="oi oi-people" aria-hidden="true"></span> Create Consumer 
-            </NavLink>
-        </div>
-        
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="producers">
-                <span class="oi oi-people" aria-hidden="true"></span> Create Producer
-            </NavLink>
-        </div>
-        
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="staffs">
-                <span class="oi oi-people" aria-hidden="true"></span> Create Staff
-            </NavLink>
-        </div>
+        @if (userRole == "Staff")
+        {
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="consumers">
+                    <span class="oi oi-people" aria-hidden="true"></span> Create Consumer
+                </NavLink>
+            </div>
 
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="listings">
-                <span class="oi oi-people" aria-hidden="true"></span> Create Listing 
-            </NavLink>
-        </div>
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="producers">
+                    <span class="oi oi-people" aria-hidden="true"></span> Create Producer
+                </NavLink>
+            </div>
 
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="products">
-                <span class="oi oi-people" aria-hidden="true"></span> Create Product 
-            </NavLink>
-        </div>
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="staffs">
+                    <span class="oi oi-people" aria-hidden="true"></span> Create Staff
+                </NavLink>
+            </div>
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="listings">
+                    <span class="oi oi-people" aria-hidden="true"></span> Create Listing
+                </NavLink>
+            </div>
 
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="reviews">
-                <span class="oi oi-people" aria-hidden="true"></span> Create Review 
-            </NavLink>
-        </div>
-      
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="products">
+                    <span class="oi oi-people" aria-hidden="true"></span> Create Product
+                </NavLink>
+            </div>
+
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="reviews">
+                    <span class="oi oi-people" aria-hidden="true"></span> Create Review
+                </NavLink>
+            </div>
+        }
+
+        else if (userRole == "Producer")
+        {
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="products">
+                    <span class="oi oi-people" aria-hidden="true"></span> Create Product
+                </NavLink>
+            </div>
+        }
+
+        else if (userRole == "Consumer")
+        {
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="reviews">
+                    <span class="oi oi-people" aria-hidden="true"></span> Create Review
+                </NavLink>
+            </div>
+        }
+    
     </nav>
 </div>
 
 @code {
     private bool collapseNavMenu = true;
+
+    private string userRole = "Staff";
+    protected override async Task OnInitializedAsync()
+    {
+        var user = await client.GetFromJsonAsync<UserProfile>("api/Users");
+
+        userRole = user.Role;
+    }
+
 
     private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
 
@@ -116,4 +147,6 @@
     {
         Navigation.NavigateToLogout("authentication/logout", "/");
     }
+
+    
 }
