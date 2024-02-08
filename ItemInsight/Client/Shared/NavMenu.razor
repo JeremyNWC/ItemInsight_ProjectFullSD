@@ -128,12 +128,21 @@
 @code {
     private bool collapseNavMenu = true;
 
-    private string userRole = "Staff";
+    private string userRole = "";
     protected override async Task OnInitializedAsync()
     {
-        var user = await client.GetFromJsonAsync<UserProfile>("api/Users");
-
-        userRole = user.Role;
+        try
+        {
+            var user = await client.GetFromJsonAsync<UserProfile>("api/Users");
+            if (user != null)
+            {
+                userRole = user.Role;
+            }
+        }
+        catch(Exception e)
+        {
+            
+        }
     }
 
 
