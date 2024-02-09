@@ -5,6 +5,8 @@
     <DataAnnotationsValidator />
     <ValidationSummary />
 
+    @if (userRole == "Staff")
+    {
     <fieldset disabled="@Disabled">
     <div class="form-group">
         <label>Product:</label>
@@ -50,7 +52,60 @@
         @ButtonText
     </button>
     }
-    <BackToList Target="reviews" />
+
+        <BackToList Target="reviews" />
+    }
+
+    else if (userRole == "Consumer")
+    {
+         <fieldset disabled="@Disabled">
+    <div class="form-group">
+        <label>Product:</label>
+        <div>
+            <InputSelect @bind-Value="review.ProductId" class="form-control">
+                <option value="">-- Select Product --</option>
+                @if (Products != null)
+                {
+                    foreach (var product in Products)
+                    {
+                        <option value="@product.Id">@product.Name</option>
+                    }
+                }
+            </InputSelect>
+            <ValidationMessage For="@(() => review.ProductId)" />
+        </div>
+    </div>
+    </fieldset>
+
+    <fieldset disabled="@Disabled">
+    <div class="form-group">
+        <label>ConsumerReview</label>
+        <div>
+            <InputText @bind-Value="@review.ConsumerReview" class="form-control" />
+            <ValidationMessage For="@(() => review.ConsumerReview)" />
+        </div>
+    </div>
+    </fieldset>
+
+    <fieldset disabled="@Disabled">
+    <div class="form-group">
+        <label>Rating</label>
+        <div>
+            <InputNumber @bind-Value="@review.Rating" class="form-control" />
+            <ValidationMessage For="@(() => review.Rating)" />
+        </div>
+    </div>
+    </fieldset>
+
+    @if (!Disabled)
+    {
+    <button type="submit" class="btn btn-success btn-block">
+        @ButtonText
+    </button>
+    }
+
+        <BackToList Target="reviewpage" />
+    }
 </EditForm>
 
 @code {
@@ -58,11 +113,26 @@
     [Parameter] public Review? review { get; set; }
     [Parameter] public string ButtonText { get; set; } = "Save";
     [Parameter] public EventCallback OnValidSubmit { get; set; }
-
-    private IList<Product>? Products;
-
-    protected async override Task OnInitializedAsync()
+    private string userRole = "";
+    protected override async Task OnInitializedAsync()
     {
         Products = await _client.GetFromJsonAsync<List<Product>>($"{Endpoints.ProductsEndpoint}");
+
+        try
+        {
+            var user = await _client.GetFromJsonAsync<UserProfile>("api/Users");
+            if (user != null)
+            {
+                userRole = user.Role;
+            }
+        }
+        catch (Exception e)
+        {
+
+        }
+
     }
+    private IList<Product>? Products;
+
+   
 }

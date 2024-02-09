@@ -1,8 +1,114 @@
 ﻿@page "/reviewpage"
+@inject HttpClient _client
+@inject IJSRuntime js
+@using ItemInsight.Shared.Domain
 
-<ReviewPageContentComponent/>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Style to create button and center it -->
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 10vh;
+        }
+
+        .GFG {
+            background-color: black;
+            border-radius: 25px;
+            border: 1px solid;
+            color: white;
+            padding: 5px 10px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        body {
+            background: linear-gradient(to bottom right, #FF6F61, #FDBB2D, #8B78E6);
+        }
+
+        table {
+            color: black; /* Set text color for all table content to black */
+        }
+
+        th, td {
+            color: black; /* Set text color for table headers and cells to black */
+            border: 1px solid black; /* Optional: Add border for better visibility */
+        }
+    </style>
+</head>
+
+<body>
+
+    <h3 style="text-align: center;">Product Reviews</h3>
+
+    <div class="container">
+        <a href="reviews/create">
+            <button class="GFG">Write review</button>
+        </a>
+    </div>
+
+    <input type="text" @bind-value="searchTerm" @bind-value:event="oninput" placeholder="Search by product name" class="form-control mb-3" />
+
+
+</body>
+
+</html>
+
 @code {
+    private List<ItemInsight.Shared.Domain.Review>? Reviews;
+    private List<ItemInsight.Shared.Domain.Product>? Products;
+    private string searchTerm;
 
+    protected async override Task OnInitializedAsync()
+    {
+        try
+        {
+            Reviews = await _client.GetFromJsonAsync<List<ItemInsight.Shared.Domain.Review>>($"{Endpoints.ReviewsEndpoint}");
+            Products = await _client.GetFromJsonAsync<List<ItemInsight.Shared.Domain.Product>>($"{Endpoints.ProductsEndpoint}");
+        }
+        catch (Exception e)
+        {
+            
+        }
+
+
+    }
+    
 }
+@if (Reviews == null)
+{
+    <div class="alert alert-info">Login to see reviews...</div>
+}
+else
+{
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th><b>Product</b></th>
+                <th><b>Image</b></th>
+                <th><b>Review</b></th>
+                <th><b>Rating</b></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var review in Reviews.Where(r => string.IsNullOrEmpty(searchTerm) || Products.Any(p => p.Id == r.ProductId && p.Name.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))))
+            {
+                var ImageProduct = Products.FirstOrDefault(p => p.Id == review.ProductId);
+
+                <tr>
+                    <td><b><a href="@ImageProduct.ProductLink">@ImageProduct.Name</a></b></td>
+                    <td><img src="@ImageProduct.ProductImage" alt="Uploaded Image" style="max-width:180px; max-height:180px;" /></td>
+                    <td><b>@review.ConsumerReview</b></td>
+                    <td><b>@review.Rating</b></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
 
 

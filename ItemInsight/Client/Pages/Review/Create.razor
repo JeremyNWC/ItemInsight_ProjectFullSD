@@ -7,22 +7,51 @@
 <hr />
 <br />
 
-<FormComponent ButtonText="Create Review" review="review" OnValidSubmit="@CreateReview" />
+@if (userRole == "Staff")
+{
+    <FormComponent ButtonText="Create Review" review="review" OnValidSubmit="@CreateReview" />
+}
 
+else if (userRole == "Consumer")
+{
+    <FormComponent ButtonText="Create Review" review="review" OnValidSubmit="@CreateReview" />
+
+}
 @code {
     Review review = new Review();
 
     private IList<Product>? Products;
+    private string userRole = "";
 
     protected async override Task OnInitializedAsync()
     {
         Products = await _client.GetFromJsonAsync<List<Product>>($"{Endpoints.ProductsEndpoint}");
+        try
+        {
+            var user = await _client.GetFromJsonAsync<UserProfile>("api/Users");
+            if (user != null)
+            {
+                userRole = user.Role;
+            }
+        }
+        catch (Exception e)
+        {
+
+        }
     }
 
     private async Task CreateReview()
     {
-        await _client.PostAsJsonAsync(Endpoints.ReviewsEndpoint, review);
-        _navManager.NavigateTo("/reviews/");
+        @if (userRole == "Staff")
+        {
+            await _client.PostAsJsonAsync(Endpoints.ReviewsEndpoint, review);
+            _navManager.NavigateTo("/reviews/");
+        }
+        else if (userRole == "Consumer")
+        {
+            await _client.PostAsJsonAsync(Endpoints.ReviewsEndpoint, review);
+            _navManager.NavigateTo("/reviewpage/");
+        }
     }
 
 }
