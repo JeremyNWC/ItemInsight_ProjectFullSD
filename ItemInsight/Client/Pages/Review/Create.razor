@@ -17,6 +17,12 @@ else if (userRole == "Consumer")
     <FormComponent ButtonText="Create Review" review="review" OnValidSubmit="@CreateReview" />
 
 }
+
+else if (userRole == "Producer")
+{
+    <h3><b><center>You are not allowed to make a review as a producer</center></b></h3>
+}
+
 @code {
     Review review = new Review();
 

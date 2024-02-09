@@ -1,7 +1,109 @@
 ﻿@page "/productpage"
+@inject HttpClient _client
+@inject IJSRuntime js
+@using ItemInsight.Shared.Domain
 
-<ProductPageContentComponent/>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Style to create button and center it -->
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 10vh;
+        }
+
+        .GFG {
+            background-color: black;
+            border-radius: 25px;
+            border: 1px solid;
+            color: white;
+            padding: 5px 10px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        body {
+            background: linear-gradient(to bottom right, #FF6F61, #FDBB2D, #8B78E6);
+        }
+
+        table {
+            color: black; /* Set text color for all table content to black */
+        }
+
+        th, td {
+            color: black; /* Set text color for table headers and cells to black */
+            border: 1px solid black; /* Optional: Add border for better visibility */
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 class="Title">Products</h1>
+
+    <input type="text" @bind-value="searchTerm" @bind-value:event="oninput" placeholder="Search by product name" class="form-control mb-3" />
+
+</body>
+</html>
 
 @code {
+    private List<ItemInsight.Shared.Domain.Product>? Products;
+    private List<ItemInsight.Shared.Domain.Listing> Listings;
+    private List<ItemInsight.Shared.Domain.Producer> Producers;
+    private string searchTerm;
+
+    protected async override Task OnInitializedAsync()
+    {
+        try
+        {
+            Products = await _client.GetFromJsonAsync<List<ItemInsight.Shared.Domain.Product>>($"{Endpoints.ProductsEndpoint}");
+            Listings = await _client.GetFromJsonAsync<List<ItemInsight.Shared.Domain.Listing>>($"{Endpoints.ListingsEndpoint}");
+            Producers = await _client.GetFromJsonAsync<List<ItemInsight.Shared.Domain.Producer>>($"{Endpoints.ProducersEndpoint}");
+        }
+        catch (Exception e)
+        {
+            
+        }
+
+    }
 
 }
+@if (Products == null)
+{
+    <div class="alert alert-info">Loading Products...</div>
+}
+else
+{
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th><b>Producer</b></th>
+                <th><b>Product</b></th>
+                <th><b>Image</b></th>
+                <th><b>Product type</b></th>
+                <th><b>Cost</b></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Products.Where(p => string.IsNullOrEmpty(searchTerm) || p.Name.Contains(searchTerm, StringComparison.OrdinalIgnoreCase)))
+            {
+                var NameListing = Listings.FirstOrDefault(l => l.Id == product.ListingId);
+
+                var NameProducer = Producers.FirstOrDefault(p => p.Id == product.ProducerId);
+
+                <tr>
+                    <td><b>@NameProducer.Name</b></td>
+                    <td><b><a href="@product.ProductLink">@product.Name</a></b></td>
+                    <td><b><img src="@product.ProductImage" alt="Uploaded Image" style="max-width:180px; max-height:180px;" /></b></td>
+                    <td><b>@NameListing.Name</b></td>
+                    <td><b>$@product.Cost</b></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
